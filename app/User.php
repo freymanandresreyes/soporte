@@ -33,4 +33,9 @@ class User extends Authenticatable
       return $this->hasMany('App\Areas');
   }
 
+  public function areauserUser()
+  {
+      return $this->hasMany('App\area_users');
+  }
+
 }
