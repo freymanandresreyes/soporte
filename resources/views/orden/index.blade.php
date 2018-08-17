@@ -3,6 +3,147 @@
 <!-- Row -->
 <!-- ***** estructura input crear producto **** -->
 <br> {{-- AQUI INICIA LA PARTE DE COMPRAS--}}
+
+<!-- Row -->
+<div class="row">
+  <div class="col-lg-12">
+      <div class="card">
+          <div class="card-header bg-info">
+              <h4 class="m-b-0 text-white">Form with view only</h4>
+          </div>
+          <div class="card-body">
+              <form class="form-horizontal" role="form">
+                  <div class="form-body">
+                      <h3 class="box-title">Person Info</h3>
+                      <hr class="m-t-0 m-b-40">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">First Name:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> John </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Last Name:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> Doe </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                      </div>
+                      <!--/row-->
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Gender:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> Male </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Date of Birth:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> 11/06/1987 </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                      </div>
+                      <!--/row-->
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Category:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> Category1 </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Membership:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static"> Free </p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                      </div>
+                      <!--/row-->
+                      <h3 class="box-title">Address</h3>
+                      <hr class="m-t-0 m-b-40">
+                    
+                    
+                      <!--/row-->
+                      
+                      <form class="form-horizontal m-t-40">
+                        
+                        
+                        <div class="form-group">
+                            <label>Text area</label>
+                            <textarea class="form-control" rows="5"></textarea>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label>Input Select</label>
+                            <select class="custom-select col-12" id="inlineFormCustomSelect">
+                                <option selected>Choose...</option>
+                                <option value="1">One</option>
+                                <option value="2">Two</option>
+                                <option value="3">Three</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Default file upload</label>
+                            <input type="file" class="form-control" id="exampleInputFile" aria-describedby="fileHelp">
+                        </div>
+                        <div class="form-group">
+                            <label>Custom File upload</label>
+                            <div class="input-group">
+                                <div class="input-group-prepend">
+                                    <span class="input-group-text">Upload</span>
+                                </div>
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
+                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label>Helping text</label>
+                            <input type="text" class="form-control" placeholder="Helping text">
+                            <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span> </div>
+                    </form>
+                  </div>
+                  <div class="form-actions">
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="row">
+                                  <div class="col-md-offset-3 col-md-9">
+                                      <button type="submit" class="btn btn-danger"> <i class="fa fa-pencil"></i> Edit</button>
+                                      <button type="button" class="btn btn-inverse">Cancel</button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="col-md-6"> </div>
+                      </div>
+                  </div>
+              </form>
+          </div>
+      </div>
+  </div>
+</div>
+<!-- Row -->
+
 <div class="row">
   <div class="col-lg-12">
     <div class="card ">
@@ -12,28 +153,7 @@
       <div class="card-body">
         <form action="#" class="form-horizontal">
           <div class="form-body">
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Acción:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="acction_compras">
-                                <option value="1">COMPRAS</option>
-                                <option value="2">TRASLADOS</option>
-                              </select>
-                  </div>
-                </div>
-              </div>
-              <!--fin de tienda -->
-              <div class="col-md-6" id="compras_uno" style="display:none">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Bodega:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="bodega" disabled name="{{ (Auth::user()->userTienda->id)}}" class="form-control" value="{{ (Auth::user()->userTienda->slug)}}">
-                  </div>
-                </div>
-              </div>
-            </div>
+        
             <div class="row">
               <div class="col-md-6">
                 <div class="form-group row">
@@ -41,7 +161,7 @@
                   <div class="col-md-9">
                     <select type="text" class="form-control" id="tienda_zona_crear">
                             <option value="">Seleccione una zona</option>
-                            @foreach ($zonas as $reg )
+                            @foreach ($areas as $reg )
                                 <option value="{{ $reg->id }}">{{ $reg->nombre }}</option>
                             @endforeach
                           </select>
@@ -71,9 +191,7 @@
                     <div class="input-group mb-3">
                       <select class="form-control custom-select" id="proveedor">
                                   <option value="" selected>Selecciona Una Opción</option>
-                                @foreach ( $proveedores as $reg )
-                                  <option value="{{ $reg->id }}" >{{ $reg->nombre }}</option>    
-                                @endforeach
+                                
                                 </select>
                       <div class="input-group-append">
                         <button class="btn btn-outline-primary" id="agregar_proveedor" type="button" data-toggle="tooltip" data-placement="left"
@@ -217,7 +335,6 @@
                   <label class="control-label text-right col-md-3">Iva:</label>
                   <div class="col-md-9">
                     <select class="form-control custom-select" id="iva" disabled>
-                                <option value="@if($consulta_iva!="[]"){{ $consulta_iva[0]->iva}}@endif">Grabado</option>
                                 <option value="0">Excluido</option>    
                               </select> {{-- <input type="text" id="iva" class="form-control" value="@if($consulta_iva!="
                       [] "){{ $consulta_iva[0]->iva}}%" name="{{ $consulta_iva[0]->iva }}@endif" disabled>
@@ -233,9 +350,7 @@
                   <div class="col-md-9">
                     <select type="text" class="form-control" id="Clasificacion" disabled>
                             <option value="">Clasificación...</option>
-                            @foreach ($clasificaciones as $reg )
-                                <option value="{{ $reg->id }}">{{ $reg->nombre }}</option>
-                            @endforeach
+                    
                           </select>
 
                   </div>
@@ -248,9 +363,7 @@
                   <div class="col-md-9">
                     <select type="text" class="form-control" id="aplicar_iva" disabled>
                       <option value="">Seleccione...</option>
-                      @foreach ($siyno as $reg)
-                      <option value="{{ $reg->id }}">{{ $reg->nombre }}</option>
-                      @endforeach
+                  
                     </select>
 
                   </div>
@@ -300,9 +413,7 @@
                   <div class="col-md-9">
                     <select type="text" class="form-control" id="aplicar_oferta" disabled>
                       <option value="">Seleccione...</option>
-                      @foreach ($siyno as $reg)
-                      <option value="{{ $reg->id }}">{{ $reg->nombre }}</option>
-                      @endforeach
+                      
                     </select>
                   </div>
                 </div>
@@ -447,7 +558,8 @@
           <!--fin de tienda -->
 
           <div class="form-group">
-            <label class="control-label">codigo:</label> {!! Form::text('codigo', null, ['class'=>'form-control', 'id'=>'codigo_modal',"placeholder"=>"Codigo
+            <label class="control-label">codigo:</label> 
+            {!! Form::text('codigo', null, ['class'=>'form-control', 'id'=>'codigo_modal',"placeholder"=>"Codigo
             del producto"]) !!}
 
           </div>
