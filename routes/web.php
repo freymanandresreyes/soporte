@@ -75,28 +75,9 @@ Route::group(['middleware' => 'auth'], function () {
   /* ======================= NUEVAS RUTAS =================================*/
   /* ======================================================================*/
 
-// ************************************************************************************
-  // RUTAS PARA LAS AREAS
-// ***************************************************************************************
-  Route::get('areas', 'AreasController@areas')->name('areas');
-  Route::get('crear_area', 'AreasController@crear_area')->name('crear_area');
-  Route::get('editar_area', 'AreasController@editar_area')->name('editar_area');
-  Route::get('guardar_editar', 'AreasController@guardar_editar')->name('guardar_editar');
-  Route::get('buscar_area_lider', 'AreasController@buscar_area_lider')->name('buscar_area_lider');
-  Route::get('quitar_area', 'AreasController@quitar_area')->name('quitar_area');
-
-
-// ********************************************************************************************
-  // RUTAS PARA LOS ESTADOS
-// **********************************************************************************************
-Route::get('nuevo_estado', 'EstadosController@nuevo_estado')->name('nuevo_estado');
-Route::get('listar_estados', 'EstadosController@listar_estados')->name('listar_estados');
-Route::get('llenar_input', 'EstadosController@llenar_input')->name('llenar_input');
-Route::get('guardar_editar_estado', 'EstadosController@guardar_editar_estado')->name('guardar_editar_estado');
-
 
 // ********************************************************************************************
   // RUTAS PARA LA VISTA DE GENERAR UNA ORDEN
 // **********************************************************************************************
-Route::get('vista_generar', 'OrdenesController@vista_generar')->name('vista_generar');
+Route::get('colaboradores','ColaboradoresController@colaboradores')->name('colaboradores');
 });
