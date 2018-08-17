@@ -28,9 +28,14 @@ class User extends Authenticatable
         'password', 'remember_token',
     ];
 
-    public function areaUser()
+    public function AreaUser()
   {
-      return $this->hasMany('App\Areas');
+      return $this->hasMany('App\areas');
+  }
+
+  public function ColaboradoresUser()
+  {
+      return $this->hasMany('App\colaboradores');
   }
 
   public function areauserUser()

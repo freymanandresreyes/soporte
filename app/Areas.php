@@ -10,4 +10,8 @@ class Areas extends Model
   {
       return $this->hasMany('App\area_users');
   }
+    public function AreasAreaUser()
+    {
+        return $this->hasMany('App\area_users');
+    }
 }
