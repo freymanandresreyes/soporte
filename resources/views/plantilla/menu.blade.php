@@ -9,6 +9,12 @@
       <ul id="sidebarnav">
 
         <li>
+          <a href="{{ route('ordenes.index') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
+             <i class="mdi mdi-cube"></i>
+             <span class="hide-menu">Requerimiento</span>
+          </a>
+        </li>
+        <li>
           <a href="{{ route('colaboradores') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
              <i class="mdi mdi-cube"></i>
              <span class="hide-menu">Colaboradores</span>

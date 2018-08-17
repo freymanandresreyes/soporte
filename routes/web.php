@@ -80,4 +80,8 @@ Route::group(['middleware' => 'auth'], function () {
   // RUTAS PARA LA VISTA DE GENERAR UNA ORDEN
 // **********************************************************************************************
 Route::get('colaboradores','ColaboradoresController@colaboradores')->name('colaboradores');
+// ********************************************************************************************
+  // RUTAS PARA LA VISTA DE ORDENES
+// **********************************************************************************************
+Route::get('ordenes','OrdenesController@index')->name('ordenes.index');
 });
