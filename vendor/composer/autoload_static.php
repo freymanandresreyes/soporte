@@ -336,6 +336,7 @@ class ComposerStaticInita518abb22ac0d380b8a7a875de3d0246
         'App\\Http\\Controllers\\Controller' => __DIR__ . '/../..' . '/app/Http/Controllers/Controller.php',
         'App\\Http\\Controllers\\DesignadosController' => __DIR__ . '/../..' . '/app/Http/Controllers/DesignadosController.php',
         'App\\Http\\Controllers\\EstadosController' => __DIR__ . '/../..' . '/app/Http/Controllers/EstadosController.php',
+        'App\\Http\\Controllers\\HistoricosController' => __DIR__ . '/../..' . '/app/Http/Controllers/HistoricosController.php',
         'App\\Http\\Controllers\\HomeController' => __DIR__ . '/../..' . '/app/Http/Controllers/HomeController.php',
         'App\\Http\\Controllers\\ItemsController' => __DIR__ . '/../..' . '/app/Http/Controllers/ItemsController.php',
         'App\\Http\\Controllers\\OrdenItemController' => __DIR__ . '/../..' . '/app/Http/Controllers/OrdenItemController.php',

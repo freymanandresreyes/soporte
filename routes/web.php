@@ -77,9 +77,10 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 // ********************************************************************************************
-  // RUTAS PARA LA VISTA DE GENERAR UNA ORDEN
+  // RUTAS PARA LA VISTA DE COLABORADORES
 // **********************************************************************************************
 Route::get('colaboradores','ColaboradoresController@colaboradores')->name('colaboradores');
+Route::get('buscar_colaborador','ColaboradoresController@buscar_colaborador')->name('buscar_colaborador');
 // ********************************************************************************************
   // RUTAS PARA LA VISTA DE ORDENES
 // **********************************************************************************************

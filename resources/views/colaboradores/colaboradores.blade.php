@@ -5,7 +5,7 @@
 <div class="card">
     <div class="card-body">
         <div class="table-responsive m-t-40">
-            <button class="btn btn-sm mdi mdi-account-plus btn-waves btn-outline" id="nuevo_vendedor">Nuevo Colaborador</button>
+            <button class="btn btn-sm mdi mdi-account-plus btn-waves btn-outline" id="nuevo_colaborador">Nuevo Colaborador</button>
             <table id="myTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
@@ -37,56 +37,74 @@
 
 
 
-{{-- 
+
 
 <div class="row menu_ocultar">
         <!-- sample modal content -->
-        <div id="vendedor" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
+        <div id="colaborador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
           <div class="modal-dialog">
             <div class="modal-content">
               <div class="modal-header">
-                  <h3>VENDEDOR</h3>
+                  <h3>COLABORADOR</h3>
               </div>
               
               <div class="modal-body">
   
                     <form>
-                            <input type="text" class="form-control" id="id">
 
                             <div class="form-group" >
-                              <label for="recipient-name" class="control-label">Nombres:</label>
-                              <input type="text" class="form-control" id="nombres_vendedor">
+                              <label for="recipient-name" class="control-label">Numero De Documento:</label>
+                              <input type="text" class="form-control" id="documento">
+                            </div>
+                            
+                            <div class="form-group" >
+                                <label for="recipient-name" class="control-label">Nombres:</label>
+                                <input type="text" disabled class="form-control" id="nombres">
+                            </div>
+                            
+                            <div class="form-group" >
+                                <label for="recipient-name" class="control-label">Apellidos:</label>
+                                <input type="text" disabled class="form-control" id="apellidos">
                             </div>
 
                             <div class="form-group" >
-                             <label for="recipient-name" class="control-label">Apellidos:</label>
-                             <input type="text" class="form-control" id="apellidos_vendedor">
+                                <label for="recipient-name" class="control-label">Telefono:</label>
+                                <input type="text" disabled class="form-control" id="telefono">
+                            </div>
+
+                            <div class="form-group" >
+                                <label for="recipient-name" class="control-label">Correo:</label>
+                                <input type="text" disabled class="form-control" id="correo">
+                            </div>
+
+                            <div class="form-group" >
+                                <label for="recipient-name" class="control-label">Contraseña:</label>
+                                <input type="text" disabled class="form-control" id="contraseña">
                             </div>
                     </form>
-                    <label for="recipient-name" class="control-label" >Tiendas:</label>
+                    {{-- <label for="recipient-name" class="control-label" >Tiendas:</label>
                       <select class="form-control custom-select" name="tienda_vendedor" id="tienda_vendedor">
                         <option value="" selected>Selecciona Una Opción</option>
                         @foreach ( $consulta_tiendas as $reg)
                             <option  value="{{ $reg->id }}">{{ $reg->slug }}</option>
                         @endforeach
-                      </select>
+                      </select> --}}
 
-                      <label for="recipient-name" class="control-label" id="label_ocultar">Estado:</label>
+                      {{-- <label for="recipient-name" class="control-label" id="label_ocultar">Estado:</label>
                       <select class="form-control custom-select" name="estado_vendedor" id="estado_vendedor">
                         <option value="" selected>Selecciona Una Opción</option>
                         <option value=1 >Activo</option>
                         <option value=2 >Inactivo</option>                        
-                      </select>
+                      </select> --}}
   
                       <div class="modal-footer">
-                          <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" id="cerrar_modal_vendedor">Cerrar</button>
-                          <button type="button" class="btn btn-success waves-effect" data-dismiss="modal" id="guardar_vendedor">Guardar</button>
-                          <button type="button" class="btn btn-success waves-effect" data-dismiss="modal" id="editar_vendedor">Actualizar</button>
+                          <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" id="cerrar_modal_colaborador">Cerrar</button>
+                          <button type="button" class="btn btn-success waves-effect" data-dismiss="modal" id="guardar_colaborador">Guardar</button>
                       </div>
   
               </div>
               </div>
             </div>
           </div>
-</div> --}}
+</div>
 @endsection
