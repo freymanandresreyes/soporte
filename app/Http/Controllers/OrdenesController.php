@@ -7,5 +7,7 @@ use App\Http\Controllers\Controller;
 
 class OrdenesController extends Controller
 {
-    //
+    public function index(){
+        return view('orden.index');
+    }
 }
