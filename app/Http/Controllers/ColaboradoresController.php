@@ -26,6 +26,11 @@ class ColaboradoresController extends Controller
 
     public function buscar_colaborador(Request $request){
         $documento=$request->documento;
-        
+        $busqueda_user=user::where('documento',$documento)->first();
+        if($busqueda_user!=null){
+            return Response(1);
+        }else{
+            return Response(2);
+        }
     }
 }
