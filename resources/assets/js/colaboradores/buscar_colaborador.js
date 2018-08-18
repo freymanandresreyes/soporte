@@ -14,7 +14,7 @@ $("#documento").keypress(function (e) {
               if(respuesta==null){
                 console.log(respuesta);
               }if(count(respuesta)>0){
-
+                
               }
           } //fin del success
         });//fin de ajax
