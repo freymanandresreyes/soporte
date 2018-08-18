@@ -11,6 +11,13 @@ $("#nuevo_colaborador").click(function() {
     });
 
     $("#cerrar_modal_colaborador").click(function() {
+      $("#documento").val("");
+      $("#nombres").val('');
+      $("#apellidos").val('');
+      $("#telefono").val('');
+      $("#correo").val('');
+      $("#contraseña").val("");
+      $("#area").val('');
       $("colaborador").removeClass("show");
       $("#colaborador").css({ display: "none" });
     });

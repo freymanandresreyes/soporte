@@ -66,7 +66,7 @@ public function crear_usuario(Request $request){
     $usuario->apellidos=strtoupper( $request->input("apellidos") ) ;
 	$usuario->telefono=$request->input("telefono");
 	$usuario->email=$request->input("email");
-	$usuario->password= bcrypt( $request->input("password") ); 
+	$usuario->password= bcrypt( $request->input("password") );
  
             
     if($usuario->save())

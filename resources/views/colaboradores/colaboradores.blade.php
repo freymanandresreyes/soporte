@@ -78,8 +78,13 @@
                             </div>
 
                             <div class="form-group" >
-                                <label for="recipient-name" class="control-label">Contraseña:</label>
-                                <input type="text" disabled class="form-control" id="contraseña">
+                                <label for="recipient-name" id="label_contraseña" style="display:none" class="control-label">Contraseña:</label>
+                                <input type="text" style="display:none" disabled class="form-control" id="contraseña">
+                            </div>
+
+                            <div class="form-group" >
+                                <label for="recipient-name" id="label_area" style="display:none" class="control-label">Area:</label>
+                                <input type="text" style="display:none" disabled class="form-control" id="area">
                             </div>
                     </form>
                     {{-- <label for="recipient-name" class="control-label" >Tiendas:</label>
@@ -99,7 +104,8 @@
   
                       <div class="modal-footer">
                           <button type="button" class="btn btn-default waves-effect" data-dismiss="modal" id="cerrar_modal_colaborador">Cerrar</button>
-                          <button type="button" class="btn btn-success waves-effect" data-dismiss="modal" id="guardar_colaborador">Guardar</button>
+                          <button type="button" class="btn btn-success waves-effect" style="display:none" disabled data-dismiss="modal" id="guardar_colaborador">Guardar</button>
+                          <button type="button" class="btn btn-info waves-effect" style="display:none" disabled data-dismiss="modal" id="crear_colaborador">Crear</button>
                       </div>
   
               </div>

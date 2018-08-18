@@ -29,8 +29,9 @@ class ColaboradoresController extends Controller
         $documento=$request->documento;
         $busqueda_user=user::where('documento',$documento)->first();
         if($busqueda_user==null){
+            $respuesta='null';
             // cuando no existe ese usuario en el sistema
-            return response()->json($busqueda_user);
+            return response()->json($respuesta);
         }else{
         $consulta=DB::table('area_users')
             ->select('area_users.id AS id_area_user', 'areas.nombre AS area_nombre', 'colaboradores.id AS id_colaborador')
@@ -44,7 +45,7 @@ class ColaboradoresController extends Controller
             return response()->json([$busqueda_user,$consulta]);
         }if(count($consulta)==0){
             // cuando el usuario existe pero no tiene un area
-            dd('bebe2');
+            return response()->json([$busqueda_user,'null']);
         }
       }
     }
