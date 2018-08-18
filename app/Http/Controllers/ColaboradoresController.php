@@ -7,6 +7,7 @@ use App\area_users;
 use App\user;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class ColaboradoresController extends Controller
 {
@@ -27,10 +28,24 @@ class ColaboradoresController extends Controller
     public function buscar_colaborador(Request $request){
         $documento=$request->documento;
         $busqueda_user=user::where('documento',$documento)->first();
-        if($busqueda_user!=null){
-            return Response(1);
+        if($busqueda_user==null){
+            // cuando no existe ese usuario en el sistema
+            return response()->json($busqueda_user);
         }else{
-            return Response(2);
+        $consulta=DB::table('area_users')
+            ->select('area_users.id AS id_area_user', 'areas.nombre AS area_nombre', 'colaboradores.id AS id_colaborador')
+            ->join('areas', 'area_users.id_area', '=', 'areas.id')
+            ->join('colaboradores', 'area_users.id', '=', 'colaboradores.id_area_encargada')
+            ->where('colaboradores.id_usuario',$busqueda_user['id'])
+            ->where('colaboradores.estado',1)
+            ->get();
+        if(count($consulta)>0){
+            // cuando el colaborador esta asignado a una area
+            return response()->json([$busqueda_user,$consulta]);
+        }if(count($consulta)==0){
+            // cuando el usuario existe pero no tiene un area
+            dd('bebe2');
         }
+      }
     }
 }
