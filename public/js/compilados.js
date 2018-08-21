@@ -27,6 +27,7 @@ $("#nuevo_colaborador").click(function() {
       $("#area").val('');
       $("colaborador").removeClass("show");
       $("#colaborador").css({ display: "none" });
+      $('#mensaje').html(respuesta);
     });
 
 });
@@ -46,6 +47,7 @@ $("#documento").keypress(function (e) {
             //   alert(respuesta[1]);
               if(respuesta=='null'){
                 alertify.error("ESTE USUARIO NO EXISTE");
+                  $("#id").val('');
                   $("#nombres").val('');
                   $("#apellidos").val('');
                   $("#telefono").val('');
@@ -77,6 +79,7 @@ $("#documento").keypress(function (e) {
                   $("#area").css({ display: "block" });;
                   $("#label_area").css({ display: "block" });;
                   $("#guardar_colaborador").css({ display: "none" });;
+                  $("#id").val(respuesta[0]['id']);
                   $("#nombres").val(respuesta[0]['nombres']);
                   $("#apellidos").val(respuesta[0]['apellidos']);
                   $("#telefono").val(respuesta[0]['telefono']);
@@ -96,6 +99,7 @@ $("#documento").keypress(function (e) {
                 $('#telefono').prop('disabled', true);
                 $('#correo').prop('disabled', true);
                 $('#contraseña').prop('disabled', true)
+                $("#id").val(respuesta[0]["id"]);
                 $("#nombres").val(respuesta[0]['nombres']);
                 $("#apellidos").val(respuesta[0]['apellidos']);
                 $("#telefono").val(respuesta[0]['telefono']);
@@ -114,4 +118,82 @@ $("#documento").keypress(function (e) {
         e.preventDefault();
         return (e.which != 13);
     }
+});
+$('#crear_colaborador').click(function(){
+    var documento = $("#documento").val();
+    var nombres = $("#nombres").val();
+    var apellidos = $("#apellidos").val();
+    var telefono = $("#telefono").val();
+    var email = $("#correo").val();
+    var password = $("#contraseña").val();
+    var url = getAbsolutePath() + 'crear_colaborador';
+
+if(documento=="" || nombres=="" || apellidos=="" || telefono=="" || email=="" || password==""){
+    alertify.error("TODOS LOS CAMPOS SON REQUERIDOS");
+    return false;
+}
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: {
+            documento: documento,
+            nombres: nombres,
+            apellidos: apellidos,
+            telefono: telefono,
+            email: email,
+            password: password
+        },
+        dataType: "json",
+        success: function (respuesta) {
+            if(respuesta==1){
+                alertify.success("USUARIO AGREGADO CORRECTAMENTE");
+                $("#id").val("");
+                $("#documento").val("");
+                $("#nombres").val('');
+                $("#apellidos").val('');
+                $("#telefono").val('');
+                $("#correo").val('');
+                $("#contraseña").val("");
+                $("#area").val('');
+                $("colaborador").removeClass("show");
+                $("#colaborador").css({ display: "none" });
+                $('#mensaje').html("");
+                return false;
+            }else{
+            $('#mensaje').html(respuesta);
+            return false;
+            }     
+        } //fin del success
+    });//fin de ajax
+});
+$("#guardar_colaborador").click(function(){
+    var id = $("#id").val();
+    var url = getAbsolutePath() + "agregar_area_colaborador";
+
+    $.ajax({
+        url: url,
+        type: "GET",
+        data: {
+            id: id
+        },
+        dataType: "json",
+        success: function (respuesta) {
+            if(respuesta){
+                alertify.success("USUARIO AGREGADO CORRECTAMENTE");
+                $("#id").val("");
+                $("#documento").val("");
+                $("#nombres").val("");
+                $("#apellidos").val("");
+                $("#telefono").val("");
+                $("#correo").val("");
+                $("#contraseña").val("");
+                $("#area").val("");
+                $("colaborador").removeClass("show");
+                $("#colaborador").css({ display: "none" });
+                $("#mensaje").html("");
+                return false;
+            }
+        } //fin del success
+    });//fin de ajax
 });

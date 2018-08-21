@@ -43,14 +43,17 @@
         <!-- sample modal content -->
         <div id="colaborador" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="display: none;">
           <div class="modal-dialog">
-            <div class="modal-content">
+            <div class="modal-content" id="factura_compra">
               <div class="modal-header">
-                  <h3>COLABORADOR</h3>
+                  <h5>COLABORADOR</h5>
               </div>
               
               <div class="modal-body">
   
                     <form>
+                        <div id="mensaje"></div>
+
+                            <input type="text" style="display:none" class="form-control" id="id">
 
                             <div class="form-group" >
                               <label for="recipient-name" class="control-label">Numero De Documento:</label>

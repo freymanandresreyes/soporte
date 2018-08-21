@@ -10,7 +10,7 @@
 </label> 
 
 </div>
-
+{{-- 
  <div class="margin" style="margin-top:50px; text-align:center;margin-bottom: 50px;">
              
              <div class="btn-group">
@@ -24,7 +24,7 @@
              </div>
        
 
- </div> 
+ </div>  --}}
 
 
  

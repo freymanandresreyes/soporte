@@ -11,8 +11,13 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.scripts([
-    'resources/assets/js/global/funciones_globales.js',
-    'resources/assets/js/colaboradores/nuevo_colaborador.js',
-    'resources/assets/js/colaboradores/buscar_colaborador.js',
-    ], 'public/js/compilados.js');
+mix.scripts(
+  [
+    "resources/assets/js/global/funciones_globales.js",
+    "resources/assets/js/colaboradores/nuevo_colaborador.js",
+    "resources/assets/js/colaboradores/buscar_colaborador.js",
+    "resources/assets/js/colaboradores/crear_colaborador.js",
+    "resources/assets/js/colaboradores/agregar_area_colaborador.js"
+  ],
+  "public/js/compilados.js"
+);

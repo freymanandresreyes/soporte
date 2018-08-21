@@ -81,6 +81,9 @@ Route::group(['middleware' => 'auth'], function () {
 // **********************************************************************************************
 Route::get('colaboradores','ColaboradoresController@colaboradores')->name('colaboradores');
 Route::get('buscar_colaborador','ColaboradoresController@buscar_colaborador')->name('buscar_colaborador');
+Route::get('crear_colaborador','ColaboradoresController@crear_colaborador')->name('crear_colaborador');
+Route::get('agregar_area_colaborador','ColaboradoresController@agregar_area_colaborador')->name('agregar_area_colaborador');
+
 // ********************************************************************************************
   // RUTAS PARA LA VISTA DE ORDENES
 // **********************************************************************************************

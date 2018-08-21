@@ -14,6 +14,7 @@ $("#documento").keypress(function (e) {
             //   alert(respuesta[1]);
               if(respuesta=='null'){
                 alertify.error("ESTE USUARIO NO EXISTE");
+                  $("#id").val('');
                   $("#nombres").val('');
                   $("#apellidos").val('');
                   $("#telefono").val('');
@@ -45,6 +46,7 @@ $("#documento").keypress(function (e) {
                   $("#area").css({ display: "block" });;
                   $("#label_area").css({ display: "block" });;
                   $("#guardar_colaborador").css({ display: "none" });;
+                  $("#id").val(respuesta[0]['id']);
                   $("#nombres").val(respuesta[0]['nombres']);
                   $("#apellidos").val(respuesta[0]['apellidos']);
                   $("#telefono").val(respuesta[0]['telefono']);
@@ -64,6 +66,7 @@ $("#documento").keypress(function (e) {
                 $('#telefono').prop('disabled', true);
                 $('#correo').prop('disabled', true);
                 $('#contraseña').prop('disabled', true)
+                $("#id").val(respuesta[0]["id"]);
                 $("#nombres").val(respuesta[0]['nombres']);
                 $("#apellidos").val(respuesta[0]['apellidos']);
                 $("#telefono").val(respuesta[0]['telefono']);

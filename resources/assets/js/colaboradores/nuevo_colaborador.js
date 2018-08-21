@@ -20,6 +20,7 @@ $("#nuevo_colaborador").click(function() {
       $("#area").val('');
       $("colaborador").removeClass("show");
       $("#colaborador").css({ display: "none" });
+      $('#mensaje').html(respuesta);
     });
 
 });
