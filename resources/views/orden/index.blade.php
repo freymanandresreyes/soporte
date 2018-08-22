@@ -9,49 +9,29 @@
   <div class="col-lg-12">
       <div class="card">
           <div class="card-header bg-info">
-              <h4 class="m-b-0 text-white">Form with view only</h4>
+              <h4 class="m-b-0 text-white">REQUERIMIENTO</h4>
           </div>
           <div class="card-body">
               <form class="form-horizontal" role="form">
                   <div class="form-body">
-                      <h3 class="box-title">Person Info</h3>
+                      <h4 class="box-title">My Perfil</h4>
                       <hr class="m-t-0 m-b-40">
                       <div class="row">
+                            <input type="text" style="display:none" value={{ $consulta[0]->id_user }} class="form-control" id="id">
                           <div class="col-md-6">
                               <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">First Name:</label>
+                                  <label class="control-label text-right col-md-3">Nombres:</label>
                                   <div class="col-md-9">
-                                      <p class="form-control-static"> John </p>
+                                      <p class="form-control-static">{{ $consulta[0]->nombres }}</p>
                                   </div>
                               </div>
                           </div>
                           <!--/span-->
                           <div class="col-md-6">
                               <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">Last Name:</label>
+                                  <label class="control-label text-right col-md-3">Apellidos:</label>
                                   <div class="col-md-9">
-                                      <p class="form-control-static"> Doe </p>
-                                  </div>
-                              </div>
-                          </div>
-                          <!--/span-->
-                      </div>
-                      <!--/row-->
-                      <div class="row">
-                          <div class="col-md-6">
-                              <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">Gender:</label>
-                                  <div class="col-md-9">
-                                      <p class="form-control-static"> Male </p>
-                                  </div>
-                              </div>
-                          </div>
-                          <!--/span-->
-                          <div class="col-md-6">
-                              <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">Date of Birth:</label>
-                                  <div class="col-md-9">
-                                      <p class="form-control-static"> 11/06/1987 </p>
+                                      <p class="form-control-static">{{ $consulta[0]->apellidos }}</p>
                                   </div>
                               </div>
                           </div>
@@ -61,67 +41,46 @@
                       <div class="row">
                           <div class="col-md-6">
                               <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">Category:</label>
+                                  <label class="control-label text-right col-md-3">Email:</label>
                                   <div class="col-md-9">
-                                      <p class="form-control-static"> Category1 </p>
+                                      <p class="form-control-static">{{ $consulta[0]->email }}</p>
                                   </div>
                               </div>
                           </div>
                           <!--/span-->
                           <div class="col-md-6">
                               <div class="form-group row">
-                                  <label class="control-label text-right col-md-3">Membership:</label>
+                                  <label class="control-label text-right col-md-3">Area:</label>
                                   <div class="col-md-9">
-                                      <p class="form-control-static"> Free </p>
+                                      <p class="form-control-static">{{ $consulta[0]->nombre_area }}</p>
                                   </div>
                               </div>
                           </div>
                           <!--/span-->
                       </div>
                       <!--/row-->
-                      <h3 class="box-title">Address</h3>
-                      <hr class="m-t-0 m-b-40">
-                    
-                    
+                      
+                      <!--/row-->
+                      <h4 class="box-title">AREAS:</h4>
+                      <hr class="m-t-0 m-b-10">
+                    <div class="form-group">
+                            <select class="custom-select col-12" id="area">
+                              <option value="" selected>Selecciona Un Area</option>
+                            @for ($i = 0 ; $i < count($areas); $i++)
+                                <option value={{ $areas[$i]['id'] }}>{{ $areas[$i]['nombre'] }}</option>
+                            @endfor                    
+                            </select>
+                        </div>
+                    <br>
                       <!--/row-->
                       
                       <form class="form-horizontal m-t-40">
                         
-                        
                         <div class="form-group">
-                            <label>Text area</label>
+                            <label>Agrega Un Item A Tú Requerimiento</label>
                             <textarea class="form-control" rows="5"></textarea>
                         </div>
-                        
-                        <div class="form-group">
-                            <label>Input Select</label>
-                            <select class="custom-select col-12" id="inlineFormCustomSelect">
-                                <option selected>Choose...</option>
-                                <option value="1">One</option>
-                                <option value="2">Two</option>
-                                <option value="3">Three</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Default file upload</label>
-                            <input type="file" class="form-control" id="exampleInputFile" aria-describedby="fileHelp">
-                        </div>
-                        <div class="form-group">
-                            <label>Custom File upload</label>
-                            <div class="input-group">
-                                <div class="input-group-prepend">
-                                    <span class="input-group-text">Upload</span>
-                                </div>
-                                <div class="custom-file">
-                                    <input type="file" class="custom-file-input" id="inputGroupFile01">
-                                    <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <label>Helping text</label>
-                            <input type="text" class="form-control" placeholder="Helping text">
-                            <span class="help-block"><small>A block of help text that breaks onto a new line and may extend beyond one line.</small></span> </div>
+                  
                     </form>
                   </div>
                   <div class="form-actions">
@@ -129,7 +88,10 @@
                           <div class="col-md-6">
                               <div class="row">
                                   <div class="col-md-offset-3 col-md-9">
-                                      <button type="submit" class="btn btn-danger"> <i class="fa fa-pencil"></i> Edit</button>
+                                      {{-- <button type="submit" class="btn btn-danger"> <i class="fa fa-pencil"></i> Edit</button> --}}
+                                      <button type="button" class="btn btn-danger" id="agregar_compra">
+                                      <i class="fa fa-plus"></i>
+                                      Agregar</button>
                                       <button type="button" class="btn btn-inverse">Cancel</button>
                                   </div>
                               </div>
@@ -143,307 +105,6 @@
   </div>
 </div>
 <!-- Row -->
-
-<div class="row">
-  <div class="col-lg-12">
-    <div class="card ">
-      <div class="card-header bg-info">
-        <h4 class="m-b-0 text-white">COMPRAS</h4>
-      </div>
-      <div class="card-body">
-        <form action="#" class="form-horizontal">
-          <div class="form-body">
-        
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Zonas:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="tienda_zona_crear">
-                            <option value="">Seleccione una zona</option>
-                            @foreach ($areas as $reg )
-                                <option value="{{ $reg->id }}">{{ $reg->nombre }}</option>
-                            @endforeach
-                          </select>
-
-                  </div>
-                </div>
-              </div>
-              <!--fin de tienda -->
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Tiendas:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="tienda_c_p">
-                            <option value="">Seleccione una tienda</option>
-                            </select>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{-- PRIMER ROW --}} {{-- FIN PRIMER ROW --}} {{-- PRIMER ROW --}}
-            <div class="row" >
-              <div class="col-md-6" style="display: block" id="compras_dos">
-                <div class="form-group  row">
-                  <label class="control-label text-right col-md-3">Proveedores:</label>
-                  <div class="col-md-9">
-                    <div class="input-group mb-3">
-                      <select class="form-control custom-select" id="proveedor">
-                                  <option value="" selected>Selecciona Una Opción</option>
-                                
-                                </select>
-                      <div class="input-group-append">
-                        <button class="btn btn-outline-primary" id="agregar_proveedor" type="button" data-toggle="tooltip" data-placement="left"
-                          title="" data-original-title="Agregar un proveedor"><i class="fa fa-plus"></i></button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-
-              <div class="col-md-6" style="display: block" id="compras_tres">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Numero De Factura:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="numero_factura" class="form-control">
-
-                  </div>
-                </div>
-              </div>
-
-
-            </div>
-
-            <div class="row">
-
-              <div class="col-md-6" style="display: block" id="compras_cuatro">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Forma De Pago:</label>
-                  <div class="col-md-9">
-                    <select class="form-control custom-select" id="forma_pago">
-                              <option value="0" selected>Selecciona Una Opción</option>
-                              <option value="1">Credito</option>
-                              <option value="2">Contado</option>    
-                            </select>
-                    <small class="form-control-feedback">Forma De Pago De La Factura. </small> </div>
-                </div>
-              </div>
-              <div class="col-md-6" style="display: block" id="compras_cinco">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Fecha:</label>
-                  <div class="col-md-9">
-                    <input type="date" id="fecha" class="form-control">
-                    <small class="form-control-feedback">Fecha De Compra. </small>
-                  </div>
-                </div>
-              </div>
-            </div>
-            {{-- FIN PRIMER ROW --}} {{-- SIGUIENTE ROW --}} {{-- FIN DEL ROW --}} {{-- SIGUIENTE ROW --}} {{-- FIN DEL ROW --}} {{--
-            SIGUIENTE ROW --}} {{-- FIN DEL ROW --}} {{-- SIGUIENTE ROW --}}
-            <div class="row">
-
-              <div class="col-md-6" style="display: block" id="compras_seis">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Fecha De Vencimiento:</label>
-                  <div class="col-md-9">
-                    <input type="date" id="fecha_vencimiento" class="form-control">
-                    <small class="form-control-feedback">Fecha De Vencimiento De La Factura.</small> </div>
-                </div>
-              </div>
-
-            </div>
-            {{-- FIN DEL ROW --}} {{-- SIGUIENTE ROW --}}
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Codigo:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="codigo" class="form-control">
-
-                  </div>
-                </div>
-                <input type="hidden" id="id_producto" name="" class="form-control">
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Titulo:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="titulo" class="form-control" disabled>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Categoria:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="categoria" class="form-control" disabled>
-                    <small class="form-control-feedback">Categoria Del Producto. </small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Subcategoria:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="subcategoria" class="form-control" disabled>
-                    <small class="form-control-feedback">Subcategoria Del Producto. </small>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Descripcion:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="descripcion" class="form-control" disabled>
-                    <small class="form-control-feedback">Descripcion del producto. </small>
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Cantidad:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="cantidad" class="form-control" disabled>
-                    <small class="form-control-feedback">Cantidad De Productos. </small>
-                  </div>
-                </div>
-              </div>
-
-            </div>
-            <div class="row">
-
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Costo Unitario:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="costo_unitario" class="form-control" disabled onkeyup="puntitos(this,this.value.charAt(this.value.length-1))">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Iva:</label>
-                  <div class="col-md-9">
-                    <select class="form-control custom-select" id="iva" disabled>
-                                <option value="0">Excluido</option>    
-                              </select> {{-- <input type="text" id="iva" class="form-control" value="@if($consulta_iva!="
-                      [] "){{ $consulta_iva[0]->iva}}%" name="{{ $consulta_iva[0]->iva }}@endif" disabled>
-                    <small class="form-control-feedback">Iva De La Tienda. </small> --}}
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Clasificación:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="Clasificacion" disabled>
-                            <option value="">Clasificación...</option>
-                    
-                          </select>
-
-                  </div>
-                </div>
-              </div>
-              <!--fin de tienda -->
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Aplicar IVA:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="aplicar_iva" disabled>
-                      <option value="">Seleccione...</option>
-                  
-                    </select>
-
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Valor Unidad:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="p_detal" class="form-control" disabled >
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Valor Mayor:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="p_mayor" class="form-control" disabled >
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">P/V detal:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="calculo_detal" class="form-control" disabled  value="" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))">
-                  </div>
-                </div>
-              </div>
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">P/V Mayor:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="calculo_mayor" class="form-control" disabled  value="" onkeyup="puntitos(this,this.value.charAt(this.value.length-1))">
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-6">
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">Aplicar descuento:</label>
-                  <div class="col-md-9">
-                    <select type="text" class="form-control" id="aplicar_oferta" disabled>
-                      <option value="">Seleccione...</option>
-                      
-                    </select>
-                  </div>
-                </div>
-              </div>
-              <!--fin de tienda -->
-              <div class="col-md-6" >
-                <div class="form-group row">
-                  <label class="control-label text-right col-md-3">% Descuento:</label>
-                  <div class="col-md-9">
-                    <input type="text" id="porsentaje_oferta"  name="" class="form-control" value="0" disabled>
-                  </div>
-                </div>
-              </div>
-            </div>
-            
-            {{-- FIN DEL ROW --}}
-            <div class="text-right">
-              <button type="button" class="btn btn-success" id="agregar_compra">
-                <i class="fa fa-plus"></i>
-                Agregar</button>
-              <button type="button" class="btn btn-warning" id="producto_compras">
-                <i class="fa fa-archive"></i>
-                Nuevo producto</button>
-            </div>
-          </div>
-        </form>
-      </div>
-    </div>
-  </div>
-</div>
 
 <!-- ============================================================== -->
 <!-- Start Page Content -->
