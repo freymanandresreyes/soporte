@@ -9,22 +9,20 @@
             <table id="myTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
-                        <th>Lider Acargo</th>
+                        <th>Lider A Cargo</th>
                         <th>Area</th>
                         <th>Nombre Colaborador</th>
                         <th></th>
-                        <th></th>
                     </tr>
                 </thead>
-                <tbody id="vendedores_tabla">
+                <tbody id="colaboradores_tabla">
                     @for ($i = 0 ; $i < count($consulta_colaboradores); $i++)
                         <tr>
                             <td>{{ $consulta_colaboradores[$i]->AreaUserColaboradores->AreaUserUser['name']}}</td>
                             <td>{{ $consulta_colaboradores[$i]->AreaUserColaboradores->AreaUserAreas['nombre'] }}</td>
                             <td>{{ $consulta_colaboradores[$i]->UserColaboradores['name'] }}</td>
-                            <td><button class="btn btn-sm mdi mdi-border-color btn-success btn-outline editar_vendedor" name="{{ $consulta_colaboradores[$i]->id }}"></button></td>
-                            @if($consulta_colaboradores[$i]->estado == 1) <td><button class="btn-sm mdi mdi-delete-forever btn-info btn-outline eliminar_vendedor" name="{{ $consulta_colaboradores[$i]->id }}"></button></td> 
-                            @else<td><button class="btn-sm mdi mdi-delete-forever btn-danger btn-outline eliminar_vendedor" name="{{ $consulta_colaboradores[$i]->id }}"></button></td>
+                            @if($consulta_colaboradores[$i]->estado == 1) <td><button class="btn-sm mdi mdi-delete-forever btn-info btn-outline estado_colaborador" name="{{ $consulta_colaboradores[$i]->UserColaboradores['id'] }}"></button></td> 
+                            @else<td><button class="btn-sm mdi mdi-delete-forever btn-danger btn-outline estado_colaborador" name="{{ $consulta_colaboradores[$i]->UserColaboradores['id'] }}"></button></td>
                             @endif
                         </tr>
                     @endfor

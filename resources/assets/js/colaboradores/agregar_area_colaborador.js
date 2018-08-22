@@ -23,6 +23,9 @@ $("#guardar_colaborador").click(function(){
                 $("colaborador").removeClass("show");
                 $("#colaborador").css({ display: "none" });
                 $("#mensaje").html("");
+                setTimeout(function () {
+                    location.reload();
+                }, 100);
                 return false;
             }
         } //fin del success

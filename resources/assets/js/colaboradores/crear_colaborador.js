@@ -38,6 +38,9 @@ if(documento=="" || nombres=="" || apellidos=="" || telefono=="" || email=="" ||
                 $("colaborador").removeClass("show");
                 $("#colaborador").css({ display: "none" });
                 $('#mensaje').html("");
+                setTimeout(function () {
+                    location.reload();
+                }, 100);
                 return false;
             }else{
             $('#mensaje').html(respuesta);
