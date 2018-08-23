@@ -41,10 +41,10 @@ class OrdenesController extends Controller
         $nueva_orden->id_area_solicita=$id_area_encargada;
         $nueva_orden->id_area_destino=$id_area_enviada;
         $nueva_orden->id_estado=3;
-        // $nueva_orden->save();
-        // $id_orden=$nueva_orden->id;
-        for ($i=0; $i < $data ; $i++) {
-            dd($data[$i][0]);
+        $nueva_orden->save();
+        $id_orden=$nueva_orden->id;
+        for ($i=0; $i < count($data) ; $i++) {
+            
             $nuevo_item=new items;
             $nuevo_item->descripcion=$data[$i][0];
             $nuevo_item->save();
