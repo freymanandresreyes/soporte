@@ -14,6 +14,21 @@
              <span class="hide-menu">Requerimiento</span>
           </a>
         </li>
+
+        <li>
+          <a href="{{ route('aceptar_requerimiento') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
+             <i class="mdi mdi-cube"></i>
+             <span class="hide-menu">Aceptar Requerimiento</span>
+          </a>
+        </li>
+
+        <li>
+          <a href="{{ route('designados') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
+             <i class="mdi mdi-cube"></i>
+             <span class="hide-menu">Designar Requerimiento</span>
+          </a>
+        </li>
+
         <li>
           <a href="{{ route('colaboradores') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
              <i class="mdi mdi-cube"></i>

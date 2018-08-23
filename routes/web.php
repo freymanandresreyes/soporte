@@ -90,4 +90,14 @@ Route::get('estado_colaborador','ColaboradoresController@estado_colaborador')->n
 // **********************************************************************************************
 Route::get('ordenes','OrdenesController@index')->name('ordenes.index');
 Route::get('guardar_orden','OrdenesController@guardar_orden')->name('guardar_orden.index');
+
+// ********************************************************************************************
+  // RUTAS PARA LA VISTA DE DESIGNADOS
+// **********************************************************************************************
+Route::get('designados','DesignadosController@designados')->name('designados');
+
+// ********************************************************************************************
+  // RUTAS PARA LA VISTA DE ACEPTAR REQUERIMIENTO
+// **********************************************************************************************
+Route::get('aceptar_requerimiento','AceptarRequerimientoController@aceptar_requerimiento')->name('aceptar_requerimiento');
 });
