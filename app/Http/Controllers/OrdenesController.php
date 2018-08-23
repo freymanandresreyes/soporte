@@ -17,7 +17,7 @@ class OrdenesController extends Controller
            return redirect('/')->with('info', 'TU NO TIENES NINGUN AREA BAJO TU RESPONSABILIDAD, !SI ERES UN LIDER PONTE EN CONTACTO CON EL ADMINISTRADOR¡'); 
         }
         $consulta=DB::table('users')
-            ->select('users.id as id_user', 'users.nombres AS nombres', 'users.apellidos AS apellidos', 'users.email AS email', 'area_users.id as id_area_encargada', 'areas.nombre as nombre_area')
+            ->select('users.id as id_user', 'users.nombres AS nombres', 'users.apellidos AS apellidos', 'users.email AS email', 'area_users.id as id_area_encargada', 'areas.nombre as nombre_area', 'areas.id as id_area')
             ->join('area_users', 'users.id', '=', 'area_users.id_usuario')
             ->join('areas', 'area_users.id_area', '=', 'areas.id')
             ->where('users.id',$user)
@@ -25,5 +25,10 @@ class OrdenesController extends Controller
         $areas=areas::all();
         // dd($consulta[0]);
         return view('orden.index', compact('consulta', 'areas'));
+    }
+
+
+    public function guardar_orden(Request $request){
+
     }
 }

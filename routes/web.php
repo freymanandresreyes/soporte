@@ -89,4 +89,5 @@ Route::get('estado_colaborador','ColaboradoresController@estado_colaborador')->n
   // RUTAS PARA LA VISTA DE ORDENES
 // **********************************************************************************************
 Route::get('ordenes','OrdenesController@index')->name('ordenes.index');
+Route::get('guardar_orden','OrdenesController@guardar_orden')->name('guardar_orden.index');
 });

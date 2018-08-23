@@ -18,7 +18,9 @@ mix.scripts(
     "resources/assets/js/colaboradores/buscar_colaborador.js",
     "resources/assets/js/colaboradores/crear_colaborador.js",
     "resources/assets/js/colaboradores/agregar_area_colaborador.js",
-    "resources/assets/js/colaboradores/estado_colaborador.js"
+    "resources/assets/js/colaboradores/estado_colaborador.js",
+    "resources/assets/js/orden/agregar_item.js",
+    "resources/assets/js/orden/guardar_orden.js"
   ],
   "public/js/compilados.js"
 );

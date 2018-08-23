@@ -21,7 +21,7 @@
     <link href=" {!! asset('css/plusis.css') !!}" rel="stylesheet">
     <link href=" {!! asset('css/print_personalizados.css') !!}" rel="stylesheet" type="text/css" media="print">
     <link href=" {!! asset('css/factura_compras.css') !!}" rel="stylesheet">
-    
+
     <!-- css alertas -->
     <link rel="stylesheet" href=" {!! asset('dist/css/alertify.core.css') !!}" />
     <link rel="stylesheet" href=" {!! asset('dist/css/alertify.default.css') !!}" />
@@ -204,7 +204,7 @@
 <!-- Footable -->
 <script src=" {!! asset('../assets/node_modules/footable/js/footable.all.min.js') !!}"></script>
 <!--FooTable init-->
-
+<script src="{!! asset('dist/js/pages/footable-init.js') !!}"></script>
 
 <!-- Libreria de Alertas  -->
 <script src=" {!! asset('dist/js/alertify.js') !!}"></script>
