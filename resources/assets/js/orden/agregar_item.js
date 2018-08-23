@@ -1,13 +1,15 @@
-$("#agregar_compra").click(function(){
-    // var id_user = $("#id").val();
+$("#agregar_item").click(function(){
+    $("#agregar_item").prop('disabled',true);
     var id_area_actual = $("#id_area_actual").val();
     var area = $("#area").val();
     var item = $("#item").val();
     if (area=="" || item==""){
+    $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDEN HABER CAMPOS VACIOS");
         return false;
     }
     if (id_area_actual == area){
+    $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDES HACER UNA ORDEN A TU PROPIA AREA");
         return false;
     }
@@ -26,4 +28,5 @@ $("#agregar_compra").click(function(){
     $("#area").prop('disabled',true);
     // $("#area").val("");
     $("#item").val("");
+    $("#agregar_item").prop('disabled', false);
 });

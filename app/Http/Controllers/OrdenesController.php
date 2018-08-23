@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use App\area_users;
 use App\Areas;
+use App\Ordenes;
+use App\Items;
+use App\Orden_Item;
 use DB;
 
 class OrdenesController extends Controller
@@ -17,7 +20,7 @@ class OrdenesController extends Controller
            return redirect('/')->with('info', 'TU NO TIENES NINGUN AREA BAJO TU RESPONSABILIDAD, !SI ERES UN LIDER PONTE EN CONTACTO CON EL ADMINISTRADOR¡'); 
         }
         $consulta=DB::table('users')
-            ->select('users.id as id_user', 'users.nombres AS nombres', 'users.apellidos AS apellidos', 'users.email AS email', 'area_users.id as id_area_encargada', 'areas.nombre as nombre_area', 'areas.id as id_area')
+            ->select('users.id as id_user', 'users.nombres AS nombres', 'users.apellidos AS apellidos', 'users.email AS email', 'users.documento as documento', 'users.telefono as telefono' ,'area_users.id as id_area_encargada', 'areas.nombre as nombre_area', 'areas.id as id_area')
             ->join('area_users', 'users.id', '=', 'area_users.id_usuario')
             ->join('areas', 'area_users.id_area', '=', 'areas.id')
             ->where('users.id',$user)
@@ -29,6 +32,30 @@ class OrdenesController extends Controller
 
 
     public function guardar_orden(Request $request){
+        $id_area_enviada=$request->id_area_enviada;
+        $id_area_encargada=$request->id_area_encargada;
+        $data=$request->data;
+        $consulta_consecutivo=ordenes::all()->last();
+        $nueva_orden=new ordenes;
+        $nueva_orden->consecutivo=$consulta_consecutivo['consecutivo']+1;
+        $nueva_orden->id_area_solicita=$id_area_encargada;
+        $nueva_orden->id_area_destino=$id_area_enviada;
+        $nueva_orden->id_estado=3;
+        // $nueva_orden->save();
+        // $id_orden=$nueva_orden->id;
+        for ($i=0; $i < $data ; $i++) {
+            dd($data[$i][0]);
+            $nuevo_item=new items;
+            $nuevo_item->descripcion=$data[$i][0];
+            $nuevo_item->save();
+            $id_item=$nuevo_item->id;
 
+            $nueva_orden_items=new orden_item;
+            $nueva_orden_items->id_orden=$id_orden;
+            $nueva_orden_items->id_item=$id_item;
+            $nueva_orden_items->id_estado=3;
+            $nueva_orden_items->save();
+        }
+        return response()->json($nueva_orden_items);
     }
 }

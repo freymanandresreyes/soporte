@@ -62,7 +62,26 @@
                           <!--/span-->
                       </div>
                       <!--/row-->
-                      
+                      <div class="row">
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Documento:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static">{{ $consulta[0]->documento }}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                          <div class="col-md-6">
+                              <div class="form-group row">
+                                  <label class="control-label text-right col-md-3">Telefono:</label>
+                                  <div class="col-md-9">
+                                      <p class="form-control-static" id="nombre_area">{{ $consulta[0]->telefono }}</p>
+                                  </div>
+                              </div>
+                          </div>
+                          <!--/span-->
+                      </div>
                       <!--/row-->
                       <h4 class="box-title">AREAS:</h4>
                       <hr class="m-t-0 m-b-10">
@@ -92,10 +111,10 @@
                               <div class="row">
                                   <div class="col-md-offset-3 col-md-9">
                                       {{-- <button type="submit" class="btn btn-danger"> <i class="fa fa-pencil"></i> Edit</button> --}}
-                                      <button type="button" class="btn btn-danger" id="agregar_compra">
+                                      <button type="button" class="btn btn-danger" id="agregar_item">
                                       <i class="fa fa-plus"></i>
                                       Agregar</button>
-                                      <button type="button" class="btn btn-inverse">Cancel</button>
+                                      {{-- <button type="button" class="btn btn-inverse">Cancel</button> --}}
                                   </div>
                               </div>
                           </div>

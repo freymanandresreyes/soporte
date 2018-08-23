@@ -227,16 +227,18 @@ $("#colaboradores_tabla").on("click", ".estado_colaborador", function(event) {
     } //fin del success
   }); //fin de ajax
 });
-$("#agregar_compra").click(function(){
-    // var id_user = $("#id").val();
+$("#agregar_item").click(function(){
+    $("#agregar_item").prop('disabled',true);
     var id_area_actual = $("#id_area_actual").val();
     var area = $("#area").val();
     var item = $("#item").val();
     if (area=="" || item==""){
+    $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDEN HABER CAMPOS VACIOS");
         return false;
     }
     if (id_area_actual == area){
+    $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDES HACER UNA ORDEN A TU PROPIA AREA");
         return false;
     }
@@ -255,11 +257,12 @@ $("#agregar_compra").click(function(){
     $("#area").prop('disabled',true);
     // $("#area").val("");
     $("#item").val("");
+    $("#agregar_item").prop('disabled', false);
 });
 // alert('hola');
 $('#guardar_orden').click(function () {
     // ****** VARIABLES ******
-    var id_user = $("#id").val();
+    var id_area_enviada = $("#area").val();
     var id_area_encargada = $("#id_area_encargada").val();
     var data = Array();
     $("#encabezado_items tr").each(function(i, v) {
@@ -280,12 +283,22 @@ $('#guardar_orden').click(function () {
       url: url,
       type: "GET",
       data: {
-        id_user: id_user,
+        id_area_enviada: id_area_enviada,
         id_area_encargada: id_area_encargada,
         data: data
       },
       dataType: "json",
       success: function(respuesta) {
+          if(respuesta){
+              alertify.success("DATOS ALMACENADOS CORRECTAMENTE!!");
+              setTimeout(function () {
+                  location.reload();
+              }, 100);
+          }
+          else{
+              alertify.error("HA OCURRIDO UN PROBLEMA.");
+              return false;
+          }
         // $('#contenido_factura').html(respuesta);
         // setTimeout("location.href='crear_devoluciones'");
       } //fin del success
