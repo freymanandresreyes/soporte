@@ -100,4 +100,5 @@ Route::get('designados','DesignadosController@designados')->name('designados');
   // RUTAS PARA LA VISTA DE ACEPTAR REQUERIMIENTO
 // **********************************************************************************************
 Route::get('aceptar_requerimiento','AceptarRequerimientoController@aceptar_requerimiento')->name('aceptar_requerimiento');
+Route::get('ver_orden','AceptarRequerimientoController@ver_orden')->name('ver_orden');
 });

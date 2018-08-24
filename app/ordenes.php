@@ -15,4 +15,11 @@ class ordenes extends Model
   {
       return $this->belongsTo('App\area_users','id_area_destino','id');
   }
+
+  public function idOrden()
+  {
+      return $this->belongsTo('App\orden_item','id','id_orden');
+  }
+
+  
 }

@@ -22,10 +22,12 @@
                             <td>ORDEN - {{ $consulta_orden[$i]->consecutivo }}</td>                            
                             <td>{{ $consulta_orden[$i]->idAreaDestino->areaAreauser['nombre'] }}</td>
                             <td>{{ $consulta_orden[$i]->idAreaSolicita->areaAreauser['nombre'] }}</td>
-                            @if($consulta_orden[$i]->id_estado == 3) <td><span class="label label-danger ">Sin Aceptar</span></td>
-                            @else<td><span class="label label-success ">Aceptado</span></td>
+                            @if($consulta_orden[$i]->id_estado == 3) <td><span class="label label-info ">Sin Aceptar</span></td>
+                            @elseif($consulta_orden[$i]->id_estado == 4)<td><span class="label label-success ">Aceptado</span></td>
+                            @elseif($consulta_orden[$i]->id_estado == 5)<td><span class="label label-warning ">Remitido</span></td>
+                            @else <td><span class="label label-danger ">Rechazado</span></td>
                             @endif
-                            <td><button class="btn btn-sm btn-info btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            <td><button class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
                         </tr>
                     @endfor
                 </tbody>

@@ -11,6 +11,7 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
     },
     dataType: "json",
     success: function(respuesta) {
+        console.log(respuesta);
       // if (respuesta == 1) {
       //     alertify.error("HUBIERON PROBLEMAS, HABLA CON EL ADMINISTRADOR!!");
       //     return false;

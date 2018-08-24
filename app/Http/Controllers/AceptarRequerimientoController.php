@@ -40,4 +40,19 @@ class AceptarRequerimientoController extends Controller
         // dd($consulta_orden);
         return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden'));
     }
+
+
+    public function ver_orden(Request $request){
+        $id_orden=$request->id_orden;
+        $consulta_orden=ordenes::where('id',$id_orden)->get();
+        $consulta_orden->each(function($consulta_orden){
+        $consulta_orden->idAreaSolicita->areaAreauser;
+        $consulta_orden->idAreaDestino->areaAreauser;
+        $consulta_orden->idOrden->ordenItems;
+        // $consulta_orden->itemsOrdenItems;
+        // $consulta_orden->UserColaboradores;
+        });
+        // dd($consulta_orden);
+        return response()->json($consulta_orden);
+    }
 }
