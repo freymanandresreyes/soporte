@@ -84,6 +84,19 @@
                             @endforeach
                             </select>
 
+                            <label for="recipient-name" class="control-label" >Areas:</label>
+                            <select disabled class="form-control custom-select" name="" id="area_de_remision">
+                            <option value="" selected>Selecciona Una Area</option>
+                            @for ($i = 0; $i < count($consulta2); $i++)
+                                <option  value="{{ $consulta2[$i]->id_area_user }}">{{ $consulta2[$i]->area_nombre}}</option>
+                            @endfor
+                            </select>
+
+                            <div class="form-group">
+                            <label>OBSERVACIONES</label>
+                            <textarea class="form-control" id="observaciones" rows="5"></textarea>
+                            </div>
+
                             <div class="form-group" id="aca">
                             
                             </div>

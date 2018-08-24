@@ -103,4 +103,5 @@ Route::get('aceptar_requerimiento','AceptarRequerimientoController@aceptar_reque
 Route::get('ver_orden','AceptarRequerimientoController@ver_orden')->name('ver_orden');
 Route::get('items_modal','AceptarRequerimientoController@items_modal')->name('items_modal');
 Route::get('aceptar_orden','AceptarRequerimientoController@aceptar_orden')->name('aceptar_orden');
+Route::get('remitir_orden','AceptarRequerimientoController@remitir_orden')->name('remitir_orden');
 });

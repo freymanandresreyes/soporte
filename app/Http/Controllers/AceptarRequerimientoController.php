@@ -42,7 +42,12 @@ class AceptarRequerimientoController extends Controller
                                  ->orwhere('id',5)
                                  ->orwhere('id',6)->pluck('nombre','id');
         // dd($consulta_estados);
-        return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden','consulta_estados'));
+        $consulta2=DB::table('area_users')
+            ->select('area_users.id AS id_area_user', 'areas.nombre AS area_nombre')
+            ->join('areas', 'area_users.id_area', '=', 'areas.id')
+            ->get();
+            // dd($consulta2[0]->id_area_user);
+        return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden','consulta_estados','consulta2'));
     }
 
 
