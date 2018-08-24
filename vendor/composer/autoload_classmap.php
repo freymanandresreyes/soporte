@@ -6,10 +6,12 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
+    'App\\AceptarRequerimiento' => $baseDir . '/app/AceptarRequerimiento.php',
     'App\\Areas' => $baseDir . '/app/Areas.php',
     'App\\Console\\Kernel' => $baseDir . '/app/Console/Kernel.php',
     'App\\Estados' => $baseDir . '/app/Estados.php',
     'App\\Exceptions\\Handler' => $baseDir . '/app/Exceptions/Handler.php',
+    'App\\Http\\Controllers\\AceptarRequerimientoController' => $baseDir . '/app/Http/Controllers/AceptarRequerimientoController.php',
     'App\\Http\\Controllers\\AreaUsersController' => $baseDir . '/app/Http/Controllers/AreaUsersController.php',
     'App\\Http\\Controllers\\AreasController' => $baseDir . '/app/Http/Controllers/AreasController.php',
     'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => $baseDir . '/app/Http/Controllers/Auth/ForgotPasswordController.php',

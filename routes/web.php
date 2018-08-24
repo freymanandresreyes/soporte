@@ -101,4 +101,6 @@ Route::get('designados','DesignadosController@designados')->name('designados');
 // **********************************************************************************************
 Route::get('aceptar_requerimiento','AceptarRequerimientoController@aceptar_requerimiento')->name('aceptar_requerimiento');
 Route::get('ver_orden','AceptarRequerimientoController@ver_orden')->name('ver_orden');
+Route::get('items_modal','AceptarRequerimientoController@items_modal')->name('items_modal');
+Route::get('aceptar_orden','AceptarRequerimientoController@aceptar_orden')->name('aceptar_orden');
 });

@@ -10,6 +10,7 @@ use App\Areas;
 use App\Ordenes;
 use App\Items;
 use App\Orden_Item;
+use App\Estados;
 use DB;
 class AceptarRequerimientoController extends Controller
 {
@@ -37,8 +38,11 @@ class AceptarRequerimientoController extends Controller
         // $consulta_orden->AreaUserColaboradores->AreaUserUser;
         // $consulta_orden->UserColaboradores;
         });
-        // dd($consulta_orden);
-        return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden'));
+        $consulta_estados=estados::where('id',4)
+                                 ->orwhere('id',5)
+                                 ->orwhere('id',6)->pluck('nombre','id');
+        // dd($consulta_estados);
+        return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden','consulta_estados'));
     }
 
 
@@ -52,7 +56,62 @@ class AceptarRequerimientoController extends Controller
         // $consulta_orden->itemsOrdenItems;
         // $consulta_orden->UserColaboradores;
         });
-        // dd($consulta_orden);
-        return response()->json($consulta_orden);
+
+        // dd($consulta_orden[0]['id']);
+
+        $consulta_items=orden_item::where('id_orden',$consulta_orden[0]['id'])->get();
+        $consulta_items->each(function($consulta_items){
+        $consulta_items->ordenItems;
+        });
+        // dd($consulta_items);
+        return response()->json([$consulta_orden,$consulta_items]);
+    }
+
+
+    public function items_modal(Request $request){
+        $id_orden=$request->id_orden;
+        $consulta_items=orden_item::where('id_orden',$id_orden)->get();
+        $consulta_items->each(function($consulta_items){
+        $consulta_items->ordenItems;
+        });
+        return response()->json(view('aceptar_requerimiento.parciales.items', compact('consulta_items'))->render());
+    }
+
+    public function aceptar_orden(Request $request){
+        $id=$request->id;
+        $id_orden=$request->id_orden;
+
+        if($id=='REMISION'){
+        $consulta_estados=estados::where('nombre',$id)->first();
+       
+        $ordenes=ordenes::find($id_orden);
+        $ordenes->id_estado=$consulta_estados->id;
+        $ordenes->id_area_destino=$nueva_area_destino;
+        $ordenes->save();
+
+        $orden_items=orden_item::where('id_orden',$id_orden)->get();
+        for ($i=0;$i<count($orden_items);$i++)
+          {
+              $orden_items[$i]->id_estado=$consulta_estados->id;
+              $orden_items[$i]->save();
+          }
+        }
+        else {
+        $consulta_estados=estados::where('nombre',$id)->first();
+       
+        $ordenes=ordenes::find($id_orden);
+        $ordenes->id_estado=$consulta_estados->id;
+        $ordenes->save();
+
+        $orden_items=orden_item::where('id_orden',$id_orden)->get();
+        for ($i=0;$i<count($orden_items);$i++)
+          {
+              $orden_items[$i]->id_estado=$consulta_estados->id;
+              $orden_items[$i]->save();
+          }
+        }
+
+        
+        // dd($orden_items[0]);
     }
 }

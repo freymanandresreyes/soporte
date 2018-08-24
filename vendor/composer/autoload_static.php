@@ -322,10 +322,12 @@ class ComposerStaticInita518abb22ac0d380b8a7a875de3d0246
     );
 
     public static $classMap = array (
+        'App\\AceptarRequerimiento' => __DIR__ . '/../..' . '/app/AceptarRequerimiento.php',
         'App\\Areas' => __DIR__ . '/../..' . '/app/Areas.php',
         'App\\Console\\Kernel' => __DIR__ . '/../..' . '/app/Console/Kernel.php',
         'App\\Estados' => __DIR__ . '/../..' . '/app/Estados.php',
         'App\\Exceptions\\Handler' => __DIR__ . '/../..' . '/app/Exceptions/Handler.php',
+        'App\\Http\\Controllers\\AceptarRequerimientoController' => __DIR__ . '/../..' . '/app/Http/Controllers/AceptarRequerimientoController.php',
         'App\\Http\\Controllers\\AreaUsersController' => __DIR__ . '/../..' . '/app/Http/Controllers/AreaUsersController.php',
         'App\\Http\\Controllers\\AreasController' => __DIR__ . '/../..' . '/app/Http/Controllers/AreasController.php',
         'App\\Http\\Controllers\\Auth\\ForgotPasswordController' => __DIR__ . '/../..' . '/app/Http/Controllers/Auth/ForgotPasswordController.php',
