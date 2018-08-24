@@ -27,8 +27,17 @@ class AceptarRequerimientoController extends Controller
             ->where('users.id',$user)
             ->get();
             // dd($consulta[0]->id_area_encargada);
-        $consulta_orden=ordenes::where('id_area_destino',$consulta[0]->id_area_encargada)
-                                ->where('id_estado',3)->get();
-        dd($consulta_orden);
+        $consulta_orden=Ordenes::where('ordenes.id_area_destino',$consulta[0]->id_area_encargada)
+                                // ->where('id_estado',3)
+                                // ->where('id_estado',4)
+                                ->get();
+        $consulta_orden->each(function($consulta_orden){
+        $consulta_orden->idAreaSolicita->areaAreauser;
+        $consulta_orden->idAreaDestino->areaAreauser;
+        // $consulta_orden->AreaUserColaboradores->AreaUserUser;
+        // $consulta_orden->UserColaboradores;
+        });
+        // dd($consulta_orden);
+        return view('aceptar_requerimiento.aceptar_requerimiento',compact('consulta_orden'));
     }
 }

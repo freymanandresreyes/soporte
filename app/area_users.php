@@ -19,6 +19,11 @@ class area_users extends Model
         return $this->hasMany('App\colaboradores');
     }
 
+    public function areaUsersOrdenes()
+    {
+        return $this->hasMany('App\Ordenes');
+    }
+
     public function AreaUserAreas()
     {
       return $this->belongsTo('App\areas','id_area','id');
