@@ -3,7 +3,7 @@ $("#aceptar_orden").click(function() {
     var id_orden = $("#id").val();
 
     if(id=='REMISION'){
-    
+        
     }
 
 
