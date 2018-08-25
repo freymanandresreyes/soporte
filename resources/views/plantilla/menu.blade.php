@@ -21,12 +21,15 @@
              <span class="hide-menu">Aceptar Requerimiento</span>
           </a>
         </li>
-
-        <li>
+        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="fa fa-id-badge "></i><span class="hide-menu">Designados</span></a>
+          <ul aria-expanded="true" class="collapse">        
+          <li>
           <a href="{{ route('designados') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
              <i class="mdi mdi-cube"></i>
-             <span class="hide-menu">Designar Requerimiento</span>
+             <span class="hide-menu">Asignar Colaborador A Requerimiento</span>
           </a>
+        </li>
+      </ul>
         </li>
 
         <li>

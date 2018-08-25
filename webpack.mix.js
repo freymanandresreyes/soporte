@@ -22,7 +22,9 @@ mix.scripts(
     "resources/assets/js/orden/agregar_item.js",
     "resources/assets/js/orden/guardar_orden.js",
     "resources/assets/js/aceptar_orden/ver_orden.js",
-    "resources/assets/js/aceptar_orden/aceptar_orden.js"
+    "resources/assets/js/aceptar_orden/aceptar_orden.js",
+    "resources/assets/js/designados/distribuir.js"
+
   ],
   "public/js/compilados.js"
 );
