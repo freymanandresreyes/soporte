@@ -11,6 +11,7 @@ use App\Ordenes;
 use App\Items;
 use App\Orden_Item;
 use App\Estados;
+use App\Historicos;
 use DB;
 class AceptarRequerimientoController extends Controller
 {
@@ -82,41 +83,65 @@ class AceptarRequerimientoController extends Controller
         return response()->json(view('aceptar_requerimiento.parciales.items', compact('consulta_items'))->render());
     }
 
-    public function aceptar_orden(Request $request){
-        $id=$request->id;
+
+    public function remitir_orden(Request $request)
+    {
+        $id=$request->id_estado;
         $id_orden=$request->id_orden;
-
-        if($id=='REMISION'){
-        $consulta_estados=estados::where('nombre',$id)->first();
-       
-        $ordenes=ordenes::find($id_orden);
-        $ordenes->id_estado=$consulta_estados->id;
-        $ordenes->id_area_destino=$nueva_area_destino;
-        $ordenes->save();
-
-        $orden_items=orden_item::where('id_orden',$id_orden)->get();
-        for ($i=0;$i<count($orden_items);$i++)
-          {
-              $orden_items[$i]->id_estado=$consulta_estados->id;
-              $orden_items[$i]->save();
-          }
-        }
-        else {
-        $consulta_estados=estados::where('nombre',$id)->first();
-       
-        $ordenes=ordenes::find($id_orden);
-        $ordenes->id_estado=$consulta_estados->id;
-        $ordenes->save();
-
-        $orden_items=orden_item::where('id_orden',$id_orden)->get();
-        for ($i=0;$i<count($orden_items);$i++)
-          {
-              $orden_items[$i]->id_estado=$consulta_estados->id;
-              $orden_items[$i]->save();
-          }
-        }
+        $id_area_solicitante=$request->id_area_solicitante;
+        $area_de_remision=$request->area_de_remision;
+        $id_my_areauser=$request->id_my_areauser;
+        $observaciones=$request->observaciones;
 
         
-        // dd($orden_items[0]);
+        $consulta_estados=estados::where('nombre',$id)->first();
+       
+        $ordenes=ordenes::find($id_orden);
+        $ordenes->id_estado=$consulta_estados->id;
+        $ordenes->id_area_destino=$area_de_remision;
+        $ordenes->save();
+
+        $orden_items=orden_item::where('id_orden',$id_orden)->get();
+        for ($i=0;$i<count($orden_items);$i++)
+          {
+              $orden_items[$i]->id_estado=$consulta_estados->id;
+              $orden_items[$i]->observacion=$observaciones;
+              $orden_items[$i]->save();
+          }
+
+        $nuevo_historial=new historicos;
+        $nuevo_historial->id_rechazado=$id_area_solicitante;
+        $nuevo_historial->id_orden=$id_orden;
+        $nuevo_historial->id_area_enviada=$area_de_remision;
+        $nuevo_historial->quien_remitio=$id_my_areauser;
+        $nuevo_historial->save();
+
+        return response()->json($nuevo_historial);
+        
+    }
+
+
+
+    public function aceptar_orden(Request $request){
+        $id=$request->id_estado;
+        $id_orden=$request->id_orden;
+        $observaciones=$request->observaciones;
+        
+        $consulta_estados=estados::where('nombre',$id)->first();
+       
+        $ordenes=ordenes::find($id_orden);
+        $ordenes->id_estado=$consulta_estados->id;
+        $ordenes->save();
+
+        $orden_items=orden_item::where('id_orden',$id_orden)->get();
+        for ($i=0;$i<count($orden_items);$i++)
+          {
+              $orden_items[$i]->id_estado=$consulta_estados->id;
+              $orden_items[$i]->observacion=$observaciones;
+              $orden_items[$i]->save();
+          }
+        
+        return response()->json($orden_items);
+        
     }
 }

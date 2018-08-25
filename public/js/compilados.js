@@ -327,10 +327,12 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
         // console.log(respuesta[0][0]['id']);
         // return false;
         $("#id").val(respuesta[0][0]["id"]);
+        $("#id_my_areauser").val(respuesta[0][0]["id_area_destino"]["id"]);
         $("#my_area").val(respuesta[0][0]["id_area_destino"]["area_areauser"]["nombre"]);
         $("#numero_orden").val(respuesta[0][0]["consecutivo"]);
         $("#fecha").val(respuesta[0][0]["created_at"]); area_solicita
         $("#area_solicita").val(respuesta[0][0]["id_area_solicita"]["area_areauser"]["nombre"]);
+        $("#id_area_solicitante").val(respuesta[0][0]["id_area_solicita"]["id"]);
 
         // for (var i = 0; i < respuesta[1].length; i++) {
         //     console.log(i);
@@ -371,64 +373,115 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
             $("#aca").html("");
             $("#numero_orden").val('');
             $("#fecha").val('');
-            $("#area_solicita").val('');
+            $("#id_my_areauser").val('');
+            $("#area_de_remision").val("");
+            $("#id_my_areauser").val("");
+            $("#estado").val("");
+            $("#id_area_solicitante").val("");
+            $("#observaciones").val("");
+            $("#area_de_remision").prop("disabled", true);
+
         });
     } //fin del success
   }); //fin de ajax
 });
 $("#aceptar_orden").click(function() {
-    var id = $("#estado").val();
+    var id_estado = $("#estado").val();
     var id_orden = $("#id").val();
     var area_de_remision = $("#area_de_remision").val();
+    var id_my_areauser = $("#id_my_areauser").val();
+    var observaciones = $("#observaciones").val();
+    var id_area_solicitante = $("#id_area_solicitante").val();
     
-    if (id == 'REMISION' ){
-        $("#area_de_remision").prop('disabled', false);
+    $("#aceptar_orden").prop('disabled',true);
+
+    if (id_estado == "REMISION") {
+      $("#area_de_remision").prop("disabled", false);
+
+      if (area_de_remision == "") {
         alertify.error("DEBES SELECCIONAR UNA AREA ALA CUAL VAS HACER LA REMISION");
-        if(area_de_remision == ""){
-            alertify.error("DEBES SELECCIONAR UNA AREA ALA CUAL VAS HACER LA REMISION");
-            return false;
-        }else{
-            var url = getAbsolutePath() + "remitir_orden";
-
-            $.ajax({
-                url: url,
-                type: "GET",
-                data: {
-                    id_orden: id_orden,
-                    id: id
-                },
-                dataType: "json",
-                success: function (respuesta) {
-
-
-                } //fin del success
-            }); //fin de ajax
+        return false;
+      } else {
+        if (area_de_remision == id_my_areauser) {
+          alertify.error("NO PUEDES REMITIR A TU PROPIA AREA");
+          return false;
         }
-    }
-    else{
-    $("#area_de_remision").prop("disabled", true);
-    return false;
+          if (area_de_remision == id_area_solicitante) {
+              alertify.error("NO PUEDES REMITIR A La MISMA AREA SOLICITANTE !!DEBES RECHAZAR LA ORDEN¡¡");
+              return false;
+        }
+        if (observaciones == "") {
+          alertify.error("DEBES COLOCAR UNA OBSERVACION DE ESTA REMISION");
+          return false;
+        }
 
-    // console.log(id_orden);
-    return false;
-    if(id==""){
+        var url = getAbsolutePath() + "remitir_orden";
+
+        $.ajax({
+          url: url,
+          type: "GET",
+          data: {
+            id_orden: id_orden,
+            id_estado: id_estado,
+            area_de_remision: area_de_remision,
+            observaciones: observaciones,
+            id_area_solicitante: id_area_solicitante,
+            id_my_areauser: id_my_areauser
+          },
+          dataType: "json",
+          success: function(respuesta) {
+              if(respuesta){
+              alertify.success("REMISION REALIZADA CON EXITO");
+                  setTimeout(function () {
+                      location.reload();
+                  }, 100);
+              return false;
+              }
+          } //fin del success
+        }); //fin de ajax
+      }
+    }
+
+    //
+    //INICIA EL ELSE
+    //
+    else {
+      $("#area_de_remision").val("");
+      $("#area_de_remision").prop("disabled", true);
+
+        if (observaciones == "") 
+        {
+        alertify.error("DEBES COLOCAR UNA OBSERVACION");
+        return false;
+        }
+
+
+      // console.log(id_orden);
+        if (id_estado == "") 
+        {
         alertify.error("DEBES SELECCIONAR UN ESTADO");
         return false;
-    }
-  var url = getAbsolutePath() + "aceptar_orden";
+        }
 
-  $.ajax({
-    url: url,
-    type: "GET",
-    data: {
-      id_orden:id_orden,
-      id: id
-    },
-    dataType: "json",
-    success: function(respuesta) {
-      
-      
-    } //fin del success
-  }); //fin de ajax
+      var url = getAbsolutePath() + "aceptar_orden";
+
+      $.ajax({
+        url: url,
+        type: "GET",
+        data: {
+          id_orden: id_orden,
+          id_estado: id_estado
+        },
+        dataType: "json",
+        success: function(respuesta) {
+            if (respuesta) {
+                alertify.success("ORDEN ACEPTADA CON EXITO");
+                setTimeout(function() {
+                  location.reload();
+                }, 100);
+                return false;
+            }
+        } //fin del success
+      }); //fin de ajax
     }
 });

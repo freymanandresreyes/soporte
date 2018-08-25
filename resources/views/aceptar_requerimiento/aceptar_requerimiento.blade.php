@@ -55,10 +55,12 @@
                     <form>
                         
                             <input type="text" style="display:none" class="form-control" id="id">
+                            <input type="text" style="display:none" class="form-control" id="id_my_areauser">
+                            <input type="text" style="display:none" class="form-control" id="id_area_solicitante">
 
                             <div class="form-group" >
                               <label for="recipient-name" class="control-label">My Area:</label>
-                              <input type="text" disabled class="form-control" id="my_area">
+                              <input type="text" value="" disabled class="form-control" id="my_area">
                             </div>
                             
                             <div class="form-group" >

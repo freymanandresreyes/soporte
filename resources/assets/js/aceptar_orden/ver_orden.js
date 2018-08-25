@@ -18,10 +18,12 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
         // console.log(respuesta[0][0]['id']);
         // return false;
         $("#id").val(respuesta[0][0]["id"]);
+        $("#id_my_areauser").val(respuesta[0][0]["id_area_destino"]["id"]);
         $("#my_area").val(respuesta[0][0]["id_area_destino"]["area_areauser"]["nombre"]);
         $("#numero_orden").val(respuesta[0][0]["consecutivo"]);
         $("#fecha").val(respuesta[0][0]["created_at"]); area_solicita
         $("#area_solicita").val(respuesta[0][0]["id_area_solicita"]["area_areauser"]["nombre"]);
+        $("#id_area_solicitante").val(respuesta[0][0]["id_area_solicita"]["id"]);
 
         // for (var i = 0; i < respuesta[1].length; i++) {
         //     console.log(i);
@@ -62,7 +64,14 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
             $("#aca").html("");
             $("#numero_orden").val('');
             $("#fecha").val('');
-            $("#area_solicita").val('');
+            $("#id_my_areauser").val('');
+            $("#area_de_remision").val("");
+            $("#id_my_areauser").val("");
+            $("#estado").val("");
+            $("#id_area_solicitante").val("");
+            $("#observaciones").val("");
+            $("#area_de_remision").prop("disabled", true);
+
         });
     } //fin del success
   }); //fin de ajax
