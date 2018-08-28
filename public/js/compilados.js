@@ -529,27 +529,31 @@ $("#requerimientos_tabla_asignar").on("click", ".ver_orden_asignar", function(ev
     });  
 });
 $("#tabla_items").on("click", ".asignar_item_colaborador_guardar", function(event){
-  var valores = [];
-  $(this)
-    .parents("tr")
-    .find("td")
-    .each(function() {
-      var celda = $(this).html() + "\n";
-      console.log(celda);
-      valores.push(celda);
+    //codigo para contar los productos que
+    //se agregaran a la compra
+    var header = Array();
+    $("#x table tr th").each(function(i, v) {
+      header[i] = $(this).text();
     });
-//   alert(valores);
 
-  console.log(valores[2]);
-//   for (var i = 0; i < valores.length; i++) 
-//   {
-    // if(valores[2]=="" || valores[3]=="")
-    // {
-    //     alertify.error("LOS CAMPOS SON OBLIGATORIOS");
-    //     event.preventDefault();
-    //     return false;
-    // }
-    // console.log('cambpos llenos');
-//   }
+    var data = Array();
+    $("#x table tr").each(function(i, v) {
+      data[i] = Array();
+      $(this)
+        .children("td")
+        .each(function(ii, vv) {
+          data[i][ii] = $(this).text();
+        });
+    });
+    data.splice(0, 1);
+    // console.log(data[1][2]);
+    var obserevacion = $(this).parents("tr").find('#observacion_m').val();
+    var select = $(this).parents("tr").find('#slect_m').val();
+
+    if(obserevacion=="" || select==""){
+        alertify.error("LOS CAMPOS SON OBLIGATORIOS");
+        event.preventDefault();
+        return false;
+    }
   event.preventDefault();
 });

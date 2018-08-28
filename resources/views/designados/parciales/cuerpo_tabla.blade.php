@@ -7,8 +7,8 @@
             @elseif($consulta[$i]->nombre_estado=='ASIGNADO')
             <span class="label label-success ">{{ $consulta[$i]->nombre_estado }}</span></td>
             @endif
-        <td><textarea class="form-control" rows="2"></textarea></td>
-        <td><select class="form-control">
+        <td><textarea class="form-control" id="observacion_m" rows="2"></textarea></td>
+        <td><select id="slect_m" class="form-control">
             @if(count($consulta2)==0)
             <option value="">Selecciona Una Opcion</option>
             @else
