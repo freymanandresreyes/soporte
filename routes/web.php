@@ -96,7 +96,7 @@ Route::get('guardar_orden','OrdenesController@guardar_orden')->name('guardar_ord
 // **********************************************************************************************
 Route::get('designados','DesignadosController@designados')->name('designados');
 Route::get('asignar_item','DesignadosController@asignar_item')->name('asignar_item');
-
+Route::get('guardar_colaborador_asignado','DesignadosController@guardar_colaborador_asignado')->name('guardar_colaborador_asignado');
 // ********************************************************************************************
   // RUTAS PARA LA VISTA DE ACEPTAR REQUERIMIENTO
 // **********************************************************************************************
@@ -105,4 +105,8 @@ Route::get('ver_orden','AceptarRequerimientoController@ver_orden')->name('ver_or
 Route::get('items_modal','AceptarRequerimientoController@items_modal')->name('items_modal');
 Route::get('aceptar_orden','AceptarRequerimientoController@aceptar_orden')->name('aceptar_orden');
 Route::get('remitir_orden','AceptarRequerimientoController@remitir_orden')->name('remitir_orden');
+// ********************************************************************************************
+  // RUTAS PARA LA VISTA DE MIS ITEMS
+// **********************************************************************************************
+Route::get('ver_items','DesignadosController@ver_items')->name('ver_items');
 });

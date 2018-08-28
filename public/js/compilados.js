@@ -508,20 +508,24 @@ $("#requerimientos_tabla_asignar").on("click", ".ver_orden_asignar", function(ev
         },
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta);
+            // console.log(respuesta);
+            // $("#id").html(id_orden);
+
             if (respuesta) {
                 $("#tabla_items").html(respuesta);
             }
         } //fin del success
     }); //fin de ajax
+    setTimeout(function () {
+        $("#orden_asignar").addClass("show");
 
-    $("#orden_asignar").addClass("show");
-
-    $("#orden_asignar").css({
-      display: "block",
-      "padding-right": "16px",
-      background: "rgba(0, 0, 0, 0.5)"
-    });
+        $("#orden_asignar").css({
+            display: "block",
+            "padding-right": "16px",
+            background: "rgba(0, 0, 0, 0.5)"
+        });
+    }, 500);
+    
 
     $("#cerrar_modal_orden_asignar").click(function() {
         $("orden_asignar").removeClass("show");
@@ -529,31 +533,43 @@ $("#requerimientos_tabla_asignar").on("click", ".ver_orden_asignar", function(ev
     });  
 });
 $("#tabla_items").on("click", ".asignar_item_colaborador_guardar", function(event){
-    //codigo para contar los productos que
-    //se agregaran a la compra
-    var header = Array();
-    $("#x table tr th").each(function(i, v) {
-      header[i] = $(this).text();
+    var valores = [];
+    $(this).parents("tr").find("td").each(function () {
+        var celda = $(this).html() + "\n";
+        valores.push(celda);
     });
-
-    var data = Array();
-    $("#x table tr").each(function(i, v) {
-      data[i] = Array();
-      $(this)
-        .children("td")
-        .each(function(ii, vv) {
-          data[i][ii] = $(this).text();
-        });
-    });
-    data.splice(0, 1);
-    // console.log(data[1][2]);
-    var obserevacion = $(this).parents("tr").find('#observacion_m').val();
+    
+    var observacion = $(this).parents("tr").find('#observacion_m').val();
     var select = $(this).parents("tr").find('#slect_m').val();
+    var id_orden = valores[0];
+    var id_item = valores[1];
 
-    if(obserevacion=="" || select==""){
+    if (observacion == "" || select == "" || id_orden==""){
         alertify.error("LOS CAMPOS SON OBLIGATORIOS");
         event.preventDefault();
         return false;
     }
+    $(this).parents("tr").find('#slect_m').prop('disabled', true);
+    $(this).parents("tr").find('#observacion_m').val("");
+    $(this).parents("tr").find('#observacion_m').prop('disabled', true);
+    var url = getAbsolutePath() + "guardar_colaborador_asignado";
+
+    $.ajax({
+      url: url,
+      type: "GET",
+      data: {
+        observacion: observacion,
+        select: select,
+        id_orden: id_orden,
+        id_item: id_item
+      },
+      dataType: "json",
+      success: function(respuesta) {
+       
+        if (respuesta) {
+            alertify.success("ITEM ASIGNADO CORRECTAMENTE");
+        }
+      } //fin del success
+    }); //fin de ajax
   event.preventDefault();
 });

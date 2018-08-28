@@ -11,6 +11,7 @@ use App\ordenes;
 use App\estados;
 use App\Items;
 use App\Orden_Item;
+use App\Designados;
 use DB;
 
 class DesignadosController extends Controller
@@ -64,8 +65,46 @@ class DesignadosController extends Controller
             ->join('users', 'colaboradores.id_usuario', '=', 'users.id')
             ->where('colaboradores.id_area_encargada',$consulta_area_users['id'])
             ->get();
-        // dd($consulta2);
-        return response()->json(view('designados.parciales.cuerpo_tabla', compact('consulta','consulta2'))->render());   
+        // dd($consulta);
+        return response()->json(view('designados.parciales.cuerpo_tabla', compact('consulta','consulta2','id_orden'))->render());   
+    }
+
+
+    public function guardar_colaborador_asignado(Request $request){
+        $id_orden=$request->id_orden;
+        $id_item=$request->id_item;
+        // dd($id_item);
+        $observacion=$request->observacion;
+        $select=$request->select;
+        $buscar_id_orden_item=Orden_Item::where('id_item',$id_item)->first();
+        // dd($buscar_id_orden_item);
+        $designados=designados::find($buscar_id_orden_item->id);
+        $designados->id_colaborador=$select;
+        $designados->observacion=$observacion;
+        $designados->id_estado=10;
+        $designados->save();
+        // dd($designados);
+        return response()->json($designados);
+    }
+
+
+    public function ver_items(Request $request){
+        $user=$request->user()->id;
+        $consulta=DB::table('designados')   
+            ->select('users.id AS id_usuraio', 'users.name AS nombre_usuario', 'designados.observacion AS observacion_designados'
+                    , 'items.descripcion AS items_descripcion', 'ordenes.consecutivo AS consecutivo_orden', 'ordenes.id AS id_orden'
+                    , 'estados.nombre AS nombre_estado', 'areas.nombre AS nombre_area')
+            ->join('users', 'designados.id_colaborador', '=', 'users.id')
+            ->join('orden_items', 'designados.id_orden_item', '=', 'orden_items.id')
+            ->join('items', 'orden_items.id_item', '=', 'items.id')
+            ->join('ordenes', 'orden_items.id_orden', '=', 'ordenes.id')
+            ->join('estados', 'designados.id_estado', '=', 'estados.id')
+            ->join('area_users', 'ordenes.id_area_solicita', '=', 'area_users.id')
+            ->join('areas', 'area_users.id_area', '=', 'areas.id')
+            ->where('designados.id_colaborador',$user)
+            ->get();
+            dd($consulta);
+        return view('designados.ver_items');
     }
 }
 

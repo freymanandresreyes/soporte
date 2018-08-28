@@ -50,7 +50,8 @@
   
                     <form>
                         
-                            {{-- <input type="text" style="display:none" class="form-control" id="id"> --}}
+{{-- <input type="text" style="display:none" class="form-control" id="id"> --}}
+                            
                             
 <div class="card">
     <div class="card-body">
@@ -58,6 +59,8 @@
             <table id="myTable" class="table table-bordered table-striped">
                 <thead>
                     <tr>
+                        <th  style="display:none"></th>
+                        <th  style="display:none"></th>
                         <th>Descripcion</th>
                         <th>Estado</th>
                         <th>Observacion</th>

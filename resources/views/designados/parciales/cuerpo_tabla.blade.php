@@ -1,6 +1,8 @@
 @for ($i = 0 ; $i < count($consulta); $i++)
     <tr>
-        <td>{{ $consulta[$i]->descripcion_items }}</td>                            
+        <td  style="display:none">{{ $id_orden }}</td>
+        <td  style="display:none">{{ $consulta[$i]->id_item }}</td>                   
+        <td>{{ $consulta[$i]->descripcion_items }}</td>                        
         <td>
             @if($consulta[$i]->nombre_estado=='SIN ASIGNAR')
             <span class="label label-danger ">{{ $consulta[$i]->nombre_estado }}</span></td>

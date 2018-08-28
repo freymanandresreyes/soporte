@@ -13,20 +13,24 @@ $("#requerimientos_tabla_asignar").on("click", ".ver_orden_asignar", function(ev
         },
         dataType: "json",
         success: function (respuesta) {
-            console.log(respuesta);
+            // console.log(respuesta);
+            // $("#id").html(id_orden);
+
             if (respuesta) {
                 $("#tabla_items").html(respuesta);
             }
         } //fin del success
     }); //fin de ajax
+    setTimeout(function () {
+        $("#orden_asignar").addClass("show");
 
-    $("#orden_asignar").addClass("show");
-
-    $("#orden_asignar").css({
-      display: "block",
-      "padding-right": "16px",
-      background: "rgba(0, 0, 0, 0.5)"
-    });
+        $("#orden_asignar").css({
+            display: "block",
+            "padding-right": "16px",
+            background: "rgba(0, 0, 0, 0.5)"
+        });
+    }, 500);
+    
 
     $("#cerrar_modal_orden_asignar").click(function() {
         $("orden_asignar").removeClass("show");
