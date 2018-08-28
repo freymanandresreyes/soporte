@@ -13,18 +13,22 @@ $("#aceptar_orden").click(function() {
 
       if (area_de_remision == "") {
         alertify.error("DEBES SELECCIONAR UNA AREA ALA CUAL VAS HACER LA REMISION");
+        $("#aceptar_orden").prop('disabled', false);
         return false;
       } else {
         if (area_de_remision == id_my_areauser) {
           alertify.error("NO PUEDES REMITIR A TU PROPIA AREA");
+          $("#aceptar_orden").prop('disabled', false);
           return false;
         }
           if (area_de_remision == id_area_solicitante) {
               alertify.error("NO PUEDES REMITIR A La MISMA AREA SOLICITANTE !!DEBES RECHAZAR LA ORDEN¡¡");
+            $("#aceptar_orden").prop('disabled', false);
               return false;
         }
         if (observaciones == "") {
           alertify.error("DEBES COLOCAR UNA OBSERVACION DE ESTA REMISION");
+          $("#aceptar_orden").prop('disabled', false);
           return false;
         }
 
@@ -65,6 +69,7 @@ $("#aceptar_orden").click(function() {
         if (observaciones == "") 
         {
         alertify.error("DEBES COLOCAR UNA OBSERVACION");
+        $("#aceptar_orden").prop('disabled', false);
         return false;
         }
 
@@ -73,6 +78,7 @@ $("#aceptar_orden").click(function() {
         if (id_estado == "") 
         {
         alertify.error("DEBES SELECCIONAR UN ESTADO");
+        $("#aceptar_orden").prop('disabled', false);
         return false;
         }
 
@@ -83,6 +89,7 @@ $("#aceptar_orden").click(function() {
         type: "GET",
         data: {
           id_orden: id_orden,
+          observaciones: observaciones,
           id_estado: id_estado
         },
         dataType: "json",

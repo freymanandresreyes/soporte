@@ -95,6 +95,7 @@ Route::get('guardar_orden','OrdenesController@guardar_orden')->name('guardar_ord
   // RUTAS PARA LA VISTA DE DESIGNADOS
 // **********************************************************************************************
 Route::get('designados','DesignadosController@designados')->name('designados');
+Route::get('asignar_item','DesignadosController@asignar_item')->name('asignar_item');
 
 // ********************************************************************************************
   // RUTAS PARA LA VISTA DE ACEPTAR REQUERIMIENTO

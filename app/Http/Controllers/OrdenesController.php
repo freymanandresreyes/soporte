@@ -9,6 +9,7 @@ use App\Areas;
 use App\Ordenes;
 use App\Items;
 use App\Orden_Item;
+use App\Designados;
 use DB;
 
 class OrdenesController extends Controller
@@ -55,6 +56,12 @@ class OrdenesController extends Controller
             $nueva_orden_items->id_item=$id_item;
             $nueva_orden_items->id_estado=3;
             $nueva_orden_items->save();
+            $id_nueva_orden_items=$nueva_orden_items->id;
+
+            $nuevo_designados=new designados;
+            $nuevo_designados->id_orden_item=$id_nueva_orden_items;
+            $nuevo_designados->id_estado=9;
+            $nuevo_designados->save();
         }
         return response()->json($nueva_orden_items);
     }

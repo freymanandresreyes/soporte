@@ -71,6 +71,7 @@ $("#requerimientos_tabla").on("click", ".ver_orden", function(event) {
             $("#id_area_solicitante").val("");
             $("#observaciones").val("");
             $("#area_de_remision").prop("disabled", true);
+            $("#aceptar_orden").prop('disabled', false);
 
         });
     } //fin del success

@@ -9,6 +9,8 @@ use App\area_users;
 use App\user;
 use App\ordenes;
 use App\estados;
+use App\Items;
+use App\Orden_Item;
 use DB;
 
 class DesignadosController extends Controller
@@ -34,12 +36,36 @@ class DesignadosController extends Controller
         $consulta_orden->each(function($consulta_orden){
         $consulta_orden->idAreaSolicita->areaAreauser;
         $consulta_orden->idAreaDestino->areaAreauser;
+        $consulta_orden->idOrden;
         // $consulta_orden->AreaUserColaboradores->AreaUserUser;
         // $consulta_orden->UserColaboradores;
         });
-        
-        
-            // dd($consulta2[0]->id_area_user);
+        // dd($consulta_orden);
         return view('designados.designados',compact('consulta_orden'));
     }
+
+
+    public function asignar_item(Request $request){
+        $id_orden=$request->id_orden;
+        $consulta=DB::table('orden_items')
+            ->select('orden_items.id as id_orden','orden_items.observacion as observacion_orden_items','items.id as id_item','items.descripcion as descripcion_items','estados.nombre as nombre_estado')
+            ->join('ordenes', 'orden_items.id_orden', '=', 'ordenes.id')
+            ->join('items', 'orden_items.id_item', '=', 'items.id')
+            ->join('designados', 'orden_items.id', '=', 'designados.id_orden_item')
+            ->join('estados', 'designados.id_estado', '=', 'estados.id')
+            ->where('orden_items.id_orden',$id_orden)
+            ->get();
+        // dd($consulta);
+        return response()->json(view('designados.parciales.cuerpo_tabla', compact('consulta'))->render());   
+    }
 }
+
+
+
+
+// SELECT orden_items.id as id_orden, orden_items.observacion as observacion_orden_items, items.id as id_item, items.descripcion as descripcion_items, estados.nombre as nombre_estado FROM orden_items
+// INNER JOIN ordenes ON orden_items.id_orden = ordenes.id
+// INNER JOIN items ON orden_items.id_item = items.id
+// INNER JOIN designados ON orden_items.id = designados.id_orden_item
+// INNER JOIN estados ON designados.id_estado = estados.id
+// WHERE orden_items.id_orden = 1
