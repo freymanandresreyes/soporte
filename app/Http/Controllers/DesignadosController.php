@@ -56,7 +56,16 @@ class DesignadosController extends Controller
             ->where('orden_items.id_orden',$id_orden)
             ->get();
         // dd($consulta);
-        return response()->json(view('designados.parciales.cuerpo_tabla', compact('consulta'))->render());   
+        $user=$request->user()->id;
+        $consulta_area_users=area_users::where('id_usuario',$user)->first();
+        // dd($consulta_area_users['id']);
+        $consulta2=DB::table('colaboradores')   
+            ->select('users.id AS id', 'users.name AS nombre')
+            ->join('users', 'colaboradores.id_usuario', '=', 'users.id')
+            ->where('colaboradores.id_area_encargada',$consulta_area_users['id'])
+            ->get();
+        // dd($consulta2);
+        return response()->json(view('designados.parciales.cuerpo_tabla', compact('consulta','consulta2'))->render());   
     }
 }
 

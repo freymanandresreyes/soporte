@@ -1,6 +1,8 @@
 $("#requerimientos_tabla_asignar").on("click", ".ver_orden_asignar", function(event) {
     var id_orden = this.name;
 
+    // $("#id").val(id_orden);
+
     var url = getAbsolutePath() + "asignar_item";
 
     $.ajax({
