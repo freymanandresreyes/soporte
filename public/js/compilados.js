@@ -584,7 +584,7 @@ $("#items_terminar_tabla").on("click", ".terminar_item", function(event) {
       });
   var id_item = this.name;
   var id_orden = valores[0];
-    // alert(valores[0]);
+    // console.log(id_orden);
 
     var url = getAbsolutePath() + "cambiar_estado_item";
 
@@ -598,8 +598,18 @@ $("#items_terminar_tabla").on("click", ".terminar_item", function(event) {
         dataType: "json",
         success: function (respuesta) {
 
-            if (respuesta) {
-                alertify.success("ITEM ASIGNADO CORRECTAMENTE");
+            if (respuesta==1) {
+                alertify.success("DATOS ALMACENADOS CORRECTAMENTE");
+                setTimeout(function () {
+                    location.reload();
+                }, 100);
+                return false;
+            }else if(respuesta){
+                alertify.success("ESTA ORDEN HA SIDO TOTALMENTE ATENDIDA");
+                setTimeout(function () {
+                    location.reload();
+                }, 100);
+                return false;
             }
         } //fin del success
     }); //fin de ajax

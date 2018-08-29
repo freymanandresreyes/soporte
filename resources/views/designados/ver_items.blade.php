@@ -31,7 +31,7 @@
                             <td><button class="btn btn-sm btn-info btn-outline terminar_item" name="{{ $consulta[$i]->id_item }}">Terminar</button></td>
 
                             @elseif($consulta[$i]->nombre_estado == 'TERMINADO')
-                            <td><span class="label label-warning ">Terminado</span></td>
+                            <td><span class="label label-info ">Terminado</span></td>
                             <td></td>
                             @endif
                         </tr>

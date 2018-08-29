@@ -110,7 +110,36 @@ class DesignadosController extends Controller
 
     public function cambiar_estado_item(Request $request)
     {
-        dd($request->id_item);
+        $id_item=$request->id_item;
+        $id_orden=$request->id_orden;
+        $editar_estado=Orden_Item::where('id_orden',$id_orden)
+                                  ->where('id_item',$id_item)->first();
+        // dd($editar_estado);
+        $editar_estado->id_estado=8;
+        $editar_estado->save();
+        $id_orden_item=$editar_estado->id;
+
+        // EDITAR EL ESTADO SEGUN EL ITEM DESIGNADO
+        $designados_consulta=designados::where('id_orden_item',$id_orden_item)->first();
+        $designados_consulta->id_estado=8;
+        $designados_consulta->save();
+
+
+        // CONSULTA QUE TRAE TODOS LOS ITEMS DE LA ORDEN
+        $consulta_orden_items=Orden_Item::where('id_orden',$id_orden)->get();
+
+        // CONSULTA QUE TRAE SOLO LOS ITEMS TERMINADOS
+        $consulta_terminados_items=Orden_Item::where('id_orden',$id_orden)
+                                              ->where('id_estado',8)->get();
+
+        if(count($consulta_orden_items)==count($consulta_terminados_items)){
+            $consulta_orden=Ordenes::find($id_orden);
+            $consulta_orden->id_estado=8;
+            $consulta_orden->save();
+            return response()->json($consulta_orden);
+        }else {
+            return response()->json(1);
+        }
     }
 }
 
