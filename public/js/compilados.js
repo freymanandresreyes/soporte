@@ -128,6 +128,10 @@ $('#crear_colaborador').click(function(){
     var password = $("#contraseña").val();
     var url = getAbsolutePath() + 'crear_colaborador';
 
+    nombres = nombres.toUpperCase();
+    apellidos = apellidos.toUpperCase();
+
+
 if(documento=="" || nombres=="" || apellidos=="" || telefono=="" || email=="" || password==""){
     alertify.error("TODOS LOS CAMPOS SON REQUERIDOS");
     return false;
@@ -232,6 +236,9 @@ $("#agregar_item").click(function(){
     var id_area_actual = $("#id_area_actual").val();
     var area = $("#area").val();
     var item = $("#item").val();
+      item=item.toUpperCase();
+    //   codigo = codigo.toUpperCase();
+
     if (area=="" || item==""){
     $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDEN HABER CAMPOS VACIOS");
@@ -394,6 +401,8 @@ $("#aceptar_orden").click(function() {
     var observaciones = $("#observaciones").val();
     var id_area_solicitante = $("#id_area_solicitante").val();
     
+    observaciones = observaciones.toUpperCase();
+
     $("#aceptar_orden").prop('disabled',true);
 
     if (id_estado == "REMISION") {
@@ -543,6 +552,9 @@ $("#tabla_items").on("click", ".asignar_item_colaborador_guardar", function(even
     var select = $(this).parents("tr").find('#slect_m').val();
     var id_orden = valores[0];
     var id_item = valores[1];
+
+    observacion = observacion.toUpperCase();
+
 
     if (observacion == "" || select == "" || id_orden==""){
         alertify.error("LOS CAMPOS SON OBLIGATORIOS");

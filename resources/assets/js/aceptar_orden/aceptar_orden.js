@@ -6,6 +6,8 @@ $("#aceptar_orden").click(function() {
     var observaciones = $("#observaciones").val();
     var id_area_solicitante = $("#id_area_solicitante").val();
     
+    observaciones = observaciones.toUpperCase();
+
     $("#aceptar_orden").prop('disabled',true);
 
     if (id_estado == "REMISION") {

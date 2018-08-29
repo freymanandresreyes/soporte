@@ -23,11 +23,16 @@
                             <td>{{ $consulta_orden[$i]->idAreaDestino->areaAreauser['nombre'] }}</td>
                             <td>{{ $consulta_orden[$i]->idAreaSolicita->areaAreauser['nombre'] }}</td>
                             @if($consulta_orden[$i]->id_estado == 3) <td><span class="label label-info ">Sin Aceptar</span></td>
-                            @elseif($consulta_orden[$i]->id_estado == 4)<td><span class="label label-success ">Aceptado</span></td>
-                            @elseif($consulta_orden[$i]->id_estado == 5)<td><span class="label label-warning ">Remitido</span></td>
-                            @else <td><span class="label label-danger ">Rechazado</span></td>
-                            @endif
                             <td><button class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            @elseif($consulta_orden[$i]->id_estado == 4)<td><span class="label label-success ">Aceptado</span></td>
+                            <td><button class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            @elseif($consulta_orden[$i]->id_estado == 5)<td><span class="label label-warning ">Remitido</span></td>
+                            <td><button class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            @elseif($consulta_orden[$i]->id_estado == 6) <td><span class="label label-danger ">Rechazado</span></td>
+                            <td><button class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            @else <td><span class="label label-info ">Terminado</span></td>
+                            <td><button disabled class="btn btn-sm btn-waves btn-outline ver_orden" name="{{ $consulta_orden[$i]['id'] }}">VER</button></td>
+                            @endif
                         </tr>
                     @endfor
                 </tbody>

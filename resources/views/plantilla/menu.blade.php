@@ -21,21 +21,20 @@
              <span class="hide-menu">Aceptar Requerimiento</span>
           </a>
         </li>
-        <li> <a class="has-arrow waves-effect waves-dark" href="javascript:void(0)" aria-expanded="false"><i class="mdi mdi-sitemap "></i><span class="hide-menu">Asignar</span></a>
-          <ul aria-expanded="true" class="collapse">        
+               
           <li>
           <a href="{{ route('designados') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
              <i class="mdi mdi-account-multiple-plus"></i>
              <span class="hide-menu">Asignar Colaborador A Requerimiento</span>
           </a>
         </li>
+      
+
         <li>
           <a href="{{ route('ver_items') }}" class="collapse" href="javascript:void(0)" aria-expanded="true">
              <i class="mdi mdi-animation"></i>
              <span class="hide-menu">Mis Items</span>
           </a>
-        </li>
-      </ul>
         </li>
 
         <li>

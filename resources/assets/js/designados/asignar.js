@@ -10,6 +10,9 @@ $("#tabla_items").on("click", ".asignar_item_colaborador_guardar", function(even
     var id_orden = valores[0];
     var id_item = valores[1];
 
+    observacion = observacion.toUpperCase();
+
+
     if (observacion == "" || select == "" || id_orden==""){
         alertify.error("LOS CAMPOS SON OBLIGATORIOS");
         event.preventDefault();

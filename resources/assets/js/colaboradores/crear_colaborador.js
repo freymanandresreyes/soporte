@@ -7,6 +7,10 @@ $('#crear_colaborador').click(function(){
     var password = $("#contraseña").val();
     var url = getAbsolutePath() + 'crear_colaborador';
 
+    nombres = nombres.toUpperCase();
+    apellidos = apellidos.toUpperCase();
+
+
 if(documento=="" || nombres=="" || apellidos=="" || telefono=="" || email=="" || password==""){
     alertify.error("TODOS LOS CAMPOS SON REQUERIDOS");
     return false;

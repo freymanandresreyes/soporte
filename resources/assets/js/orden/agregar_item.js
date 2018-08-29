@@ -3,6 +3,9 @@ $("#agregar_item").click(function(){
     var id_area_actual = $("#id_area_actual").val();
     var area = $("#area").val();
     var item = $("#item").val();
+      item=item.toUpperCase();
+    //   codigo = codigo.toUpperCase();
+
     if (area=="" || item==""){
     $("#agregar_item").prop("disabled", false);
         alertify.error("NO PUEDEN HABER CAMPOS VACIOS");
