@@ -1,5 +1,6 @@
 @extends('layout') 
 @section('contenido')
+
 <!-- Row -->
 <!-- ***** estructura input crear producto **** -->
 <br> {{-- AQUI INICIA LA PARTE DE COMPRAS--}}

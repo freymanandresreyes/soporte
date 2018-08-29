@@ -116,9 +116,21 @@ class AceptarRequerimientoController extends Controller
         $nuevo_historial->quien_remitio=$id_my_areauser;
         $nuevo_historial->save();
 
+
+$correo=$request->user()->email;
+$estado_ticket=$request->id_estado;
+
+
+
+
         return response()->json($nuevo_historial);
         
     }
+
+
+
+
+
 
 
 

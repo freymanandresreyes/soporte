@@ -33,6 +33,7 @@ class OrdenesController extends Controller
 
 
     public function guardar_orden(Request $request){
+
         $id_area_enviada=$request->id_area_enviada;
         $id_area_encargada=$request->id_area_encargada;
         $data=$request->data;
