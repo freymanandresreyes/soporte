@@ -92,7 +92,7 @@ class DesignadosController extends Controller
         $user=$request->user()->id;
         $consulta=DB::table('designados')   
             ->select('users.id AS id_usuraio', 'users.name AS nombre_usuario', 'designados.observacion AS observacion_designados'
-                    , 'items.descripcion AS items_descripcion', 'ordenes.consecutivo AS consecutivo_orden', 'ordenes.id AS id_orden'
+                    , 'items.descripcion AS items_descripcion', 'items.id AS id_item' ,'ordenes.consecutivo AS consecutivo_orden', 'ordenes.id AS id_orden'
                     , 'estados.nombre AS nombre_estado', 'areas.nombre AS nombre_area')
             ->join('users', 'designados.id_colaborador', '=', 'users.id')
             ->join('orden_items', 'designados.id_orden_item', '=', 'orden_items.id')
@@ -103,8 +103,14 @@ class DesignadosController extends Controller
             ->join('areas', 'area_users.id_area', '=', 'areas.id')
             ->where('designados.id_colaborador',$user)
             ->get();
-            dd($consulta);
-        return view('designados.ver_items');
+            // dd($consulta);
+        return view('designados.ver_items',compact('consulta'));
+    }
+
+
+    public function cambiar_estado_item(Request $request)
+    {
+        dd($request->id_item);
     }
 }
 

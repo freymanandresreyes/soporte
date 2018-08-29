@@ -109,4 +109,5 @@ Route::get('remitir_orden','AceptarRequerimientoController@remitir_orden')->name
   // RUTAS PARA LA VISTA DE MIS ITEMS
 // **********************************************************************************************
 Route::get('ver_items','DesignadosController@ver_items')->name('ver_items');
+Route::get('cambiar_estado_item', 'DesignadosController@cambiar_estado_item')->name('cambiar_estado_item');
 });

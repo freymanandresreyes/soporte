@@ -24,7 +24,8 @@ mix.scripts(
     "resources/assets/js/aceptar_orden/ver_orden.js",
     "resources/assets/js/aceptar_orden/aceptar_orden.js",
     "resources/assets/js/designados/distribuir.js",
-    "resources/assets/js/designados/asignar.js"
+    "resources/assets/js/designados/asignar.js",
+    "resources/assets/js/terminar_item/terminar_item.js"
   ],
   "public/js/compilados.js"
 );
